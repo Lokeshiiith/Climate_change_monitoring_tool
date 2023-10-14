@@ -212,9 +212,21 @@ if st.session_state.access_granted:
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.subheader("My Guide (Guide's Name)")
-            st.write("My guide is an assistant professor at [University Name] specializing in [Guide's Specialization].")
+            st.subheader("My Advisor (Advisor's Name)")
+            st.write("My advisor is a professor at [University Name] with expertise in [Advisor's Expertise].")
+            
             st.image("./Images/srehana.jpg", use_column_width=True)
+            # Link to Advisor's LinkedIn Profile
+            advisor_linkedin = "[Advisor's LinkedIn Profile](Advisor's LinkedIn URL)"
+            st.markdown(advisor_linkedin, unsafe_allow_html=True)
+            # Link to Advisor's Research Papers
+            advisor_papers = "[Advisor's Research Papers](Advisor's Research Papers URL)"
+            st.markdown(advisor_papers, unsafe_allow_html=True)
+        
+        with col2:
+            st.subheader("My Guide (Guide's Name)")
+            st.write("My guide is an PHD RESERCH at [University Name] specializing in [Guide's Specialization].")
+            st.image("./Images/avantika.jpg", use_column_width=True)
             # Link to Guide's LinkedIn Profile
             guide_linkedin = "[Guide's LinkedIn Profile](Guide's LinkedIn URL)"
             st.markdown(guide_linkedin, unsafe_allow_html=True)
@@ -224,16 +236,6 @@ if st.session_state.access_granted:
             st.markdown(guide_papers, unsafe_allow_html=True)
 
         # Information about Your Advisoravantika
-        with col2:
-            st.subheader("My Advisor (Advisor's Name)")
-            st.write("My advisor is a professor at [University Name] with expertise in [Advisor's Expertise].")
-            st.image("./Images/avantika.jpg", use_column_width=True)
-            # Link to Advisor's LinkedIn Profile
-            advisor_linkedin = "[Advisor's LinkedIn Profile](Advisor's LinkedIn URL)"
-            st.markdown(advisor_linkedin, unsafe_allow_html=True)
-            # Link to Advisor's Research Papers
-            advisor_papers = "[Advisor's Research Papers](Advisor's Research Papers URL)"
-            st.markdown(advisor_papers, unsafe_allow_html=True)
 
         # Information about You
         with col3:
