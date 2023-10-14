@@ -14,9 +14,8 @@ import streamlit as st
 try:
     import openpyxl
 except ImportError:
-    # Install the missing dependency
-    import pip
-    pip.main(['install', 'openpyxl'])
+    import subprocess
+    subprocess.check_call(['pip', 'install', 'openpyxl'])
     import openpyxl  # Retry importing the library
 
 # Rest of your Streamlit app code
