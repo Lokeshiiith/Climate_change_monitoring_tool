@@ -11,7 +11,6 @@ import numpy as np
 import logging
 import textwrap
 import streamlit as st
-import streamlit as st
 # Ignore FutureWarnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 # Filter out the warning you want to suppress

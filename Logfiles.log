@@ -102,3 +102,15 @@
 2023-10-14 04:05:12,776 - INFO - ---Showing Sen Slope test for Himachal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
 2023-10-14 04:05:14,193 - INFO - ---Plotted graph for Himachal Pradesh-Cubic-Annual----
 2023-10-14 04:05:14,216 - INFO - ---Showing Sen Slope test for Himachal Pradesh-Cubic-Annual----
+2023-10-14 12:12:33,902 - INFO - States: J&K
+2023-10-14 12:12:33,908 - INFO - Season: ANNUALLY
+2023-10-14 12:12:33,908 - INFO - Interpolation: IDW
+2023-10-14 12:12:33,908 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 12:12:33,908 - INFO - Years to Extract: (1965, 1999)
+2023-10-14 12:12:33,908 - INFO - Selected values logged.
+2023-10-14 12:12:33,908 - INFO - ---State = J&K --, interpoation = IDW-----
+2023-10-14 12:12:34,993 - INFO - ---Plotted graph for J&K-IDW----
+2023-10-14 12:12:35,043 - INFO - ---Showing Sen Slope test for J&K-IDW-----
+2023-10-14 12:12:35,050 - INFO - 
+2023-10-14 12:12:35,471 - INFO - ---Plotted graph for J&K-IDW-Annual----
+2023-10-14 12:12:35,485 - INFO - ---Showing Sen Slope test for J&K-IDW-Annual----
