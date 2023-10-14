@@ -1,0 +1,430 @@
+2023-10-11 11:53:10,704 - INFO - States: J&K
+2023-10-11 11:53:10,705 - INFO - Season: Annually
+2023-10-11 11:53:10,705 - INFO - Analysis_type: Annually
+2023-10-11 11:53:10,705 - INFO - Months: [('Jan', 'Mar', 'Apr', 'May')]
+2023-10-11 11:53:10,705 - INFO - Interpolation: IDW
+2023-10-11 11:53:10,705 - INFO - Years to Show: (1, 3, 5, 7)
+2023-10-11 11:53:10,705 - INFO - Years to Extract: (1961, 2015)
+2023-10-11 11:53:10,705 - INFO - 
+2023-10-11 12:00:11,740 - INFO - States: J&K
+2023-10-11 12:00:11,740 - INFO - Season: Monthly
+2023-10-11 12:00:11,740 - INFO - Interpolation: Cubic
+2023-10-11 12:00:11,741 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 12:00:11,741 - INFO - Years to Extract: (1989, 2015)
+2023-10-11 12:00:11,741 - INFO - 
+2023-10-11 12:00:11,741 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 12:00:11,822 - INFO - ---Plotted graph for J&K-Cubic----
+2023-10-11 12:00:11,862 - INFO - ---Showing Sen Slope test for J&K-Cubic-----
+2023-10-11 12:00:11,868 - INFO - 
+2023-10-11 12:05:18,301 - INFO - States: Select State
+2023-10-11 12:05:18,301 - INFO - Season: Monthly
+2023-10-11 12:05:18,301 - INFO - Interpolation: Select Interpolation
+2023-10-11 12:05:18,301 - INFO - Years to Show: (1, 5)
+2023-10-11 12:05:18,301 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:05:18,301 - INFO - 
+2023-10-11 12:05:18,305 - INFO - ---State = Select State --, interpoation = Select Interpolation-----
+2023-10-11 12:05:28,131 - INFO - States: J&K
+2023-10-11 12:05:28,131 - INFO - Season: Monthly
+2023-10-11 12:05:28,131 - INFO - Interpolation: Cubic
+2023-10-11 12:05:28,131 - INFO - Years to Show: (7,)
+2023-10-11 12:05:28,131 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:05:28,131 - INFO - 
+2023-10-11 12:05:28,131 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 12:05:28,184 - INFO - ---Plotted graph for J&K-Cubic----
+2023-10-11 12:05:28,211 - INFO - ---Showing Sen Slope test for J&K-Cubic-----
+2023-10-11 12:05:28,225 - INFO - 
+2023-10-11 12:05:28,496 - INFO - ---Plotted graph for J&K-Cubic-Annual----
+2023-10-11 12:05:28,500 - INFO - ---Showing Sen Slope test for J&K-Cubic-Annual----
+2023-10-11 12:06:05,617 - INFO - States: HP
+2023-10-11 12:06:05,617 - INFO - Season: Monthly
+2023-10-11 12:06:05,617 - INFO - Interpolation: Cubic
+2023-10-11 12:06:05,617 - INFO - Years to Show: (7,)
+2023-10-11 12:06:05,617 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:06:05,617 - INFO - 
+2023-10-11 12:06:05,617 - INFO - ---State = HP --, interpoation = Cubic-----
+2023-10-11 12:06:05,631 - INFO - ---Plotted graph for HP-Cubic----
+2023-10-11 12:06:05,650 - INFO - ---Showing Sen Slope test for HP-Cubic-----
+2023-10-11 12:06:05,653 - INFO - 
+2023-10-11 12:06:05,867 - INFO - ---Plotted graph for HP-Cubic-Annual----
+2023-10-11 12:06:05,871 - INFO - ---Showing Sen Slope test for HP-Cubic-Annual----
+2023-10-11 12:06:09,692 - INFO - States: UK
+2023-10-11 12:06:09,692 - INFO - Season: Monthly
+2023-10-11 12:06:09,692 - INFO - Interpolation: Cubic
+2023-10-11 12:06:09,692 - INFO - Years to Show: (7,)
+2023-10-11 12:06:09,692 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:06:09,692 - INFO - 
+2023-10-11 12:06:09,692 - INFO - ---State = UK --, interpoation = Cubic-----
+2023-10-11 12:06:09,715 - INFO - ---Plotted graph for UK-Cubic----
+2023-10-11 12:06:09,728 - INFO - ---Showing Sen Slope test for UK-Cubic-----
+2023-10-11 12:06:09,731 - INFO - 
+2023-10-11 12:06:09,921 - INFO - ---Plotted graph for UK-Cubic-Annual----
+2023-10-11 12:06:09,926 - INFO - ---Showing Sen Slope test for UK-Cubic-Annual----
+2023-10-11 12:07:09,878 - INFO - States: J&K
+2023-10-11 12:07:09,878 - INFO - Season: Monthly
+2023-10-11 12:07:09,878 - INFO - Interpolation: Nearest
+2023-10-11 12:07:09,878 - INFO - Years to Show: (0,)
+2023-10-11 12:07:09,878 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:07:09,878 - INFO - 
+2023-10-11 12:07:09,880 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 12:07:09,892 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 12:07:09,905 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 12:07:09,908 - INFO - 
+2023-10-11 12:08:50,505 - INFO - States: AP
+2023-10-11 12:08:50,505 - INFO - Season: Monthly
+2023-10-11 12:08:50,505 - INFO - Interpolation: Cubic
+2023-10-11 12:08:50,505 - INFO - Years to Show: (1, 5)
+2023-10-11 12:08:50,505 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:08:50,505 - INFO - 
+2023-10-11 12:08:50,505 - INFO - ---State = AP --, interpoation = Cubic-----
+2023-10-11 12:08:50,520 - INFO - ---Plotted graph for AP-Cubic----
+2023-10-11 12:08:50,534 - INFO - ---Showing Sen Slope test for AP-Cubic-----
+2023-10-11 12:08:50,537 - INFO - 
+2023-10-11 12:10:18,671 - INFO - States: AP
+2023-10-11 12:10:18,671 - INFO - Season: Monthly
+2023-10-11 12:10:18,673 - INFO - Interpolation: Cubic
+2023-10-11 12:10:18,673 - INFO - Years to Show: (1,)
+2023-10-11 12:10:18,673 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:10:18,673 - INFO - 
+2023-10-11 12:10:18,673 - INFO - ---State = AP --, interpoation = Cubic-----
+2023-10-11 12:10:18,686 - INFO - ---Plotted graph for AP-Cubic----
+2023-10-11 12:10:18,701 - INFO - ---Showing Sen Slope test for AP-Cubic-----
+2023-10-11 12:10:18,704 - INFO - 
+2023-10-11 12:10:18,935 - INFO - ---Plotted graph for AP-Cubic-Annual----
+2023-10-11 12:10:18,939 - INFO - ---Showing Sen Slope test for AP-Cubic-Annual----
+2023-10-11 12:10:36,880 - INFO - States: AP
+2023-10-11 12:10:36,881 - INFO - Season: Monthly
+2023-10-11 12:10:36,881 - INFO - Interpolation: IDW
+2023-10-11 12:10:36,881 - INFO - Years to Show: (1, 3, 5, 7)
+2023-10-11 12:10:36,881 - INFO - Years to Extract: (1964, 2003)
+2023-10-11 12:10:36,881 - INFO - 
+2023-10-11 12:10:36,881 - INFO - ---State = AP --, interpoation = IDW-----
+2023-10-11 12:10:36,904 - INFO - ---Plotted graph for AP-IDW----
+2023-10-11 12:10:36,916 - INFO - ---Showing Sen Slope test for AP-IDW-----
+2023-10-11 12:10:36,920 - INFO - 
+2023-10-11 12:10:37,150 - INFO - ---Plotted graph for AP-IDW-Annual----
+2023-10-11 12:10:37,153 - INFO - ---Showing Sen Slope test for AP-IDW-Annual----
+2023-10-11 12:12:25,770 - INFO - States: J&K
+2023-10-11 12:12:25,770 - INFO - Season: Monthly
+2023-10-11 12:12:25,770 - INFO - Interpolation: Cubic
+2023-10-11 12:12:25,770 - INFO - Years to Show: (1, 5)
+2023-10-11 12:12:25,770 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:12:25,770 - INFO - 
+2023-10-11 12:12:25,770 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 12:13:46,063 - INFO - States: J&K
+2023-10-11 12:13:46,063 - INFO - Season: Monthly
+2023-10-11 12:13:46,063 - INFO - Interpolation: Cubic
+2023-10-11 12:13:46,063 - INFO - Years to Show: (1, 5)
+2023-10-11 12:13:46,063 - INFO - Years to Extract: (1977, 1997)
+2023-10-11 12:13:46,063 - INFO - 
+2023-10-11 12:13:46,063 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 12:13:46,075 - INFO - ---Plotted graph for J&K-Cubic----
+2023-10-11 12:13:46,082 - INFO - ---Showing Sen Slope test for J&K-Cubic-----
+2023-10-11 12:13:46,085 - INFO - 
+2023-10-11 12:13:46,312 - INFO - ---Plotted graph for J&K-Cubic-Annual----
+2023-10-11 12:13:46,315 - INFO - ---Showing Sen Slope test for J&K-Cubic-Annual----
+2023-10-11 12:15:21,292 - INFO - States: J&K
+2023-10-11 12:15:21,292 - INFO - Season: Monthly
+2023-10-11 12:15:21,293 - INFO - Interpolation: Cubic
+2023-10-11 12:15:21,293 - INFO - Years to Show: (0, 1, 3, 5)
+2023-10-11 12:15:21,293 - INFO - Years to Extract: (1969, 1998)
+2023-10-11 12:15:21,293 - INFO - 
+2023-10-11 12:15:21,293 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 12:15:21,306 - INFO - ---Plotted graph for J&K-Cubic----
+2023-10-11 12:16:19,159 - INFO - States: UK
+2023-10-11 12:16:19,159 - INFO - Season: Monthly
+2023-10-11 12:16:19,159 - INFO - Interpolation: Nearest
+2023-10-11 12:16:19,159 - INFO - Years to Show: (1, 5)
+2023-10-11 12:16:19,159 - INFO - Years to Extract: (1986, 2005)
+2023-10-11 12:16:19,159 - INFO - 
+2023-10-11 12:16:19,160 - INFO - ---State = UK --, interpoation = Nearest-----
+2023-10-11 12:17:27,391 - INFO - States: J&K
+2023-10-11 12:17:27,392 - INFO - Season: Monthly
+2023-10-11 12:17:27,392 - INFO - Interpolation: Nearest
+2023-10-11 12:17:27,393 - INFO - Years to Show: (2, 4)
+2023-10-11 12:17:27,393 - INFO - Years to Extract: (1964, 1993)
+2023-10-11 12:17:27,393 - INFO - 
+2023-10-11 12:17:27,393 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 12:17:27,406 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 12:17:27,424 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 12:17:27,428 - INFO - 
+2023-10-11 12:17:27,695 - INFO - ---Plotted graph for J&K-Nearest-Annual----
+2023-10-11 12:17:27,698 - INFO - ---Showing Sen Slope test for J&K-Nearest-Annual----
+2023-10-11 12:17:58,618 - INFO - States: AP
+2023-10-11 12:17:58,618 - INFO - Season: Monthly
+2023-10-11 12:17:58,618 - INFO - Interpolation: IDW
+2023-10-11 12:17:58,618 - INFO - Years to Show: (1, 5)
+2023-10-11 12:17:58,618 - INFO - Years to Extract: (1963, 1986)
+2023-10-11 12:17:58,618 - INFO - 
+2023-10-11 12:17:58,618 - INFO - ---State = AP --, interpoation = IDW-----
+2023-10-11 12:17:59,255 - INFO - ---Plotted graph for AP-IDW----
+2023-10-11 12:17:59,267 - INFO - ---Showing Sen Slope test for AP-IDW-----
+2023-10-11 12:17:59,272 - INFO - 
+2023-10-11 12:17:59,540 - INFO - ---Plotted graph for AP-IDW-Annual----
+2023-10-11 12:17:59,543 - INFO - ---Showing Sen Slope test for AP-IDW-Annual----
+2023-10-11 12:22:34,032 - INFO - States: J&K
+2023-10-11 12:22:34,032 - INFO - Season: Monthly
+2023-10-11 12:22:34,032 - INFO - Interpolation: Nearest
+2023-10-11 12:22:34,032 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 12:22:34,032 - INFO - Years to Extract: (1965, 1991)
+2023-10-11 12:22:34,032 - INFO - 
+2023-10-11 12:22:34,034 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 12:22:34,360 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 12:22:34,380 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 12:22:34,387 - INFO - 
+2023-10-11 12:22:34,586 - INFO - ---Plotted graph for J&K-Nearest-Annual----
+2023-10-11 12:22:34,590 - INFO - ---Showing Sen Slope test for J&K-Nearest-Annual----
+2023-10-11 12:34:05,660 - INFO - States: J&K
+2023-10-11 12:34:05,661 - INFO - Season: Monthly
+2023-10-11 12:34:05,661 - INFO - Interpolation: Nearest
+2023-10-11 12:34:05,661 - INFO - Years to Show: (1, 3, 5, 8)
+2023-10-11 12:34:05,661 - INFO - Years to Extract: (1969, 2006)
+2023-10-11 12:34:05,661 - INFO - 
+2023-10-11 12:34:05,661 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 12:34:06,069 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 12:34:06,088 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 12:34:06,092 - INFO - 
+2023-10-11 12:34:06,289 - INFO - ---Plotted graph for J&K-Nearest-Annual----
+2023-10-11 12:34:06,293 - INFO - ---Showing Sen Slope test for J&K-Nearest-Annual----
+2023-10-11 12:39:23,548 - INFO - States: HP
+2023-10-11 12:39:23,552 - INFO - Season: Monthly
+2023-10-11 12:39:23,552 - INFO - Interpolation: Nearest
+2023-10-11 12:39:23,552 - INFO - Years to Show: (3,)
+2023-10-11 12:39:23,552 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 12:39:23,552 - INFO - 
+2023-10-11 12:39:23,553 - INFO - ---State = HP --, interpoation = Nearest-----
+2023-10-11 12:39:24,064 - INFO - ---Plotted graph for HP-Nearest----
+2023-10-11 12:39:24,093 - INFO - ---Showing Sen Slope test for HP-Nearest-----
+2023-10-11 12:39:24,099 - INFO - 
+2023-10-11 12:39:24,323 - INFO - ---Plotted graph for HP-Nearest-Annual----
+2023-10-11 12:39:24,327 - INFO - ---Showing Sen Slope test for HP-Nearest-Annual----
+2023-10-11 12:40:26,113 - INFO - States: AP
+2023-10-11 12:40:26,113 - INFO - Season: Monthly
+2023-10-11 12:40:26,113 - INFO - Interpolation: IDW
+2023-10-11 12:40:26,113 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 12:40:26,113 - INFO - Years to Extract: (1966, 1992)
+2023-10-11 12:40:26,113 - INFO - 
+2023-10-11 12:40:26,113 - INFO - ---State = AP --, interpoation = IDW-----
+2023-10-11 12:40:26,366 - INFO - ---Plotted graph for AP-IDW----
+2023-10-11 12:40:26,380 - INFO - ---Showing Sen Slope test for AP-IDW-----
+2023-10-11 12:40:26,386 - INFO - 
+2023-10-11 12:40:26,577 - INFO - ---Plotted graph for AP-IDW-Annual----
+2023-10-11 12:40:26,580 - INFO - ---Showing Sen Slope test for AP-IDW-Annual----
+2023-10-11 13:04:34,179 - INFO - States: J&K
+2023-10-11 13:04:34,182 - INFO - Season: Monthly
+2023-10-11 13:04:34,182 - INFO - Interpolation: Nearest
+2023-10-11 13:04:34,183 - INFO - Years to Show: (1, 3, 5)
+2023-10-11 13:04:34,183 - INFO - Years to Extract: (1963, 1996)
+2023-10-11 13:04:34,183 - INFO - 
+2023-10-11 13:04:34,186 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 13:04:34,678 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 13:04:34,700 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 13:04:34,713 - INFO - 
+2023-10-11 13:04:34,909 - INFO - ---Plotted graph for J&K-Nearest-Annual----
+2023-10-11 13:04:34,912 - INFO - ---Showing Sen Slope test for J&K-Nearest-Annual----
+2023-10-11 13:05:28,282 - INFO - States: J&K
+2023-10-11 13:05:28,282 - INFO - Season: Monthly
+2023-10-11 13:05:28,282 - INFO - Interpolation: IDW
+2023-10-11 13:05:28,282 - INFO - Years to Show: (1, 3, 5)
+2023-10-11 13:05:28,282 - INFO - Years to Extract: (1968, 1991)
+2023-10-11 13:05:28,282 - INFO - 
+2023-10-11 13:05:28,282 - INFO - ---State = J&K --, interpoation = IDW-----
+2023-10-11 13:05:28,538 - INFO - ---Plotted graph for J&K-IDW----
+2023-10-11 13:06:28,891 - INFO - States: UK
+2023-10-11 13:06:28,891 - INFO - Season: Monthly
+2023-10-11 13:06:28,891 - INFO - Interpolation: Cubic
+2023-10-11 13:06:28,891 - INFO - Years to Show: (1, 2, 5, 7, 9)
+2023-10-11 13:06:28,892 - INFO - Years to Extract: (1963, 1989)
+2023-10-11 13:06:28,892 - INFO - 
+2023-10-11 13:06:28,892 - INFO - ---State = UK --, interpoation = Cubic-----
+2023-10-11 13:06:29,669 - INFO - ---Plotted graph for UK-Cubic----
+2023-10-11 13:06:29,681 - INFO - ---Showing Sen Slope test for UK-Cubic-----
+2023-10-11 13:06:29,688 - INFO - 
+2023-10-11 13:06:29,875 - INFO - ---Plotted graph for UK-Cubic-Annual----
+2023-10-11 13:06:29,878 - INFO - ---Showing Sen Slope test for UK-Cubic-Annual----
+2023-10-11 13:13:22,869 - INFO - States: J&K
+2023-10-11 13:13:22,873 - INFO - Season: Monthly
+2023-10-11 13:13:22,873 - INFO - Interpolation: Nearest
+2023-10-11 13:13:22,873 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 13:13:22,873 - INFO - Years to Extract: (1978, 1995)
+2023-10-11 13:13:22,873 - INFO - 
+2023-10-11 13:13:22,876 - INFO - ---State = J&K --, interpoation = Nearest-----
+2023-10-11 13:13:23,327 - INFO - ---Plotted graph for J&K-Nearest----
+2023-10-11 13:13:23,350 - INFO - ---Showing Sen Slope test for J&K-Nearest-----
+2023-10-11 13:13:23,358 - INFO - 
+2023-10-11 13:13:23,556 - INFO - ---Plotted graph for J&K-Nearest-Annual----
+2023-10-11 13:13:23,560 - INFO - ---Showing Sen Slope test for J&K-Nearest-Annual----
+2023-10-11 13:16:05,042 - INFO - States: AP
+2023-10-11 13:16:05,043 - INFO - Season: Monthly
+2023-10-11 13:16:05,043 - INFO - Interpolation: Nearest
+2023-10-11 13:16:05,043 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 13:16:05,043 - INFO - Years to Extract: (1974, 1992)
+2023-10-11 13:16:05,043 - INFO - 
+2023-10-11 13:16:05,043 - INFO - ---State = AP --, interpoation = Nearest-----
+2023-10-11 13:16:05,289 - INFO - ---Plotted graph for AP-Nearest----
+2023-10-11 13:16:05,304 - INFO - ---Showing Sen Slope test for AP-Nearest-----
+2023-10-11 13:16:05,308 - INFO - 
+2023-10-11 13:16:05,475 - INFO - ---Plotted graph for AP-Nearest-Annual----
+2023-10-11 13:16:05,478 - INFO - ---Showing Sen Slope test for AP-Nearest-Annual----
+2023-10-11 13:16:41,595 - INFO - States: SK
+2023-10-11 13:16:41,595 - INFO - Season: Monthly
+2023-10-11 13:16:41,595 - INFO - Interpolation: Nearest
+2023-10-11 13:16:41,595 - INFO - Years to Show: (1, 5, 7, 9)
+2023-10-11 13:16:41,595 - INFO - Years to Extract: (1962, 1992)
+2023-10-11 13:16:41,595 - INFO - 
+2023-10-11 13:16:41,596 - INFO - ---State = SK --, interpoation = Nearest-----
+2023-10-11 13:16:41,858 - INFO - ---Plotted graph for SK-Nearest----
+2023-10-11 13:16:41,872 - INFO - ---Showing Sen Slope test for SK-Nearest-----
+2023-10-11 13:16:41,877 - INFO - 
+2023-10-11 13:16:42,063 - INFO - ---Plotted graph for SK-Nearest-Annual----
+2023-10-11 13:16:42,067 - INFO - ---Showing Sen Slope test for SK-Nearest-Annual----
+2023-10-11 13:16:57,468 - INFO - States: SK
+2023-10-11 13:16:57,468 - INFO - Season: Monthly
+2023-10-11 13:16:57,468 - INFO - Interpolation: Linear
+2023-10-11 13:16:57,468 - INFO - Years to Show: (1, 5, 7, 9)
+2023-10-11 13:16:57,468 - INFO - Years to Extract: (1962, 1992)
+2023-10-11 13:16:57,468 - INFO - 
+2023-10-11 13:16:57,469 - INFO - ---State = SK --, interpoation = Linear-----
+2023-10-11 13:16:57,706 - INFO - ---Plotted graph for SK-Linear----
+2023-10-11 13:16:57,719 - INFO - ---Showing Sen Slope test for SK-Linear-----
+2023-10-11 13:16:57,722 - INFO - 
+2023-10-11 13:16:57,900 - INFO - ---Plotted graph for SK-Linear-Annual----
+2023-10-11 13:16:57,904 - INFO - ---Showing Sen Slope test for SK-Linear-Annual----
+2023-10-11 13:17:06,264 - INFO - States: UK
+2023-10-11 13:17:06,265 - INFO - Season: Monthly
+2023-10-11 13:17:06,265 - INFO - Interpolation: Linear
+2023-10-11 13:17:06,265 - INFO - Years to Show: (1, 5, 7, 9)
+2023-10-11 13:17:06,265 - INFO - Years to Extract: (1962, 1992)
+2023-10-11 13:17:06,265 - INFO - 
+2023-10-11 13:17:06,265 - INFO - ---State = UK --, interpoation = Linear-----
+2023-10-11 13:17:06,505 - INFO - ---Plotted graph for UK-Linear----
+2023-10-11 13:17:06,518 - INFO - ---Showing Sen Slope test for UK-Linear-----
+2023-10-11 13:17:06,523 - INFO - 
+2023-10-11 13:17:06,690 - INFO - ---Plotted graph for UK-Linear-Annual----
+2023-10-11 13:17:06,694 - INFO - ---Showing Sen Slope test for UK-Linear-Annual----
+2023-10-11 13:17:22,819 - INFO - States: SK
+2023-10-11 13:17:22,820 - INFO - Season: Monthly
+2023-10-11 13:17:22,820 - INFO - Interpolation: Linear
+2023-10-11 13:17:22,820 - INFO - Years to Show: (1, 5, 7, 9)
+2023-10-11 13:17:22,820 - INFO - Years to Extract: (1962, 2015)
+2023-10-11 13:17:22,820 - INFO - 
+2023-10-11 13:17:22,820 - INFO - ---State = SK --, interpoation = Linear-----
+2023-10-11 13:17:23,126 - INFO - ---Plotted graph for SK-Linear----
+2023-10-11 13:17:23,144 - INFO - ---Showing Sen Slope test for SK-Linear-----
+2023-10-11 13:17:23,148 - INFO - 
+2023-10-11 13:17:23,356 - INFO - ---Plotted graph for SK-Linear-Annual----
+2023-10-11 13:17:23,360 - INFO - ---Showing Sen Slope test for SK-Linear-Annual----
+2023-10-11 13:19:09,156 - INFO - States: AP
+2023-10-11 13:19:09,157 - INFO - Season: Monthly
+2023-10-11 13:19:09,157 - INFO - Interpolation: Nearest
+2023-10-11 13:19:09,157 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 13:19:09,157 - INFO - Years to Extract: (1980, 2015)
+2023-10-11 13:19:09,157 - INFO - 
+2023-10-11 13:19:09,157 - INFO - ---State = AP --, interpoation = Nearest-----
+2023-10-11 13:19:09,432 - INFO - ---Plotted graph for AP-Nearest----
+2023-10-11 13:19:09,445 - INFO - ---Showing Sen Slope test for AP-Nearest-----
+2023-10-11 13:19:09,451 - INFO - 
+2023-10-11 13:19:09,645 - INFO - ---Plotted graph for AP-Nearest-Annual----
+2023-10-11 13:19:09,652 - INFO - ---Showing Sen Slope test for AP-Nearest-Annual----
+2023-10-11 13:39:18,717 - INFO - States: AP
+2023-10-11 13:39:18,718 - INFO - Season: Monthly
+2023-10-11 13:39:18,718 - INFO - Interpolation: Nearest
+2023-10-11 13:39:18,718 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 13:39:18,718 - INFO - Years to Extract: (1976, 2015)
+2023-10-11 13:39:18,718 - INFO - 
+2023-10-11 13:39:18,719 - INFO - ---State = AP --, interpoation = Nearest-----
+2023-10-11 13:39:19,060 - INFO - ---Plotted graph for AP-Nearest----
+2023-10-11 13:39:19,080 - INFO - ---Showing Sen Slope test for AP-Nearest-----
+2023-10-11 13:39:19,086 - INFO - 
+2023-10-11 13:39:19,297 - INFO - ---Plotted graph for AP-Nearest-Annual----
+2023-10-11 13:39:19,300 - INFO - ---Showing Sen Slope test for AP-Nearest-Annual----
+2023-10-11 16:46:17,763 - INFO - States: J&K
+2023-10-11 16:46:17,763 - INFO - Season: Monthly
+2023-10-11 16:46:17,763 - INFO - Interpolation: IDW
+2023-10-11 16:46:17,763 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 16:46:17,763 - INFO - Years to Extract: (1980, 2015)
+2023-10-11 16:46:17,763 - INFO - 
+2023-10-11 16:46:17,763 - INFO - ---State = J&K --, interpoation = IDW-----
+2023-10-11 16:46:18,128 - INFO - ---Plotted graph for J&K-IDW----
+2023-10-11 16:46:18,161 - INFO - ---Showing Sen Slope test for J&K-IDW-----
+2023-10-11 16:46:18,171 - INFO - 
+2023-10-11 16:46:18,382 - INFO - ---Plotted graph for J&K-IDW-Annual----
+2023-10-11 16:46:18,382 - INFO - ---Showing Sen Slope test for J&K-IDW-Annual----
+2023-10-11 16:47:48,977 - INFO - States: SK
+2023-10-11 16:47:48,977 - INFO - Season: Monthly
+2023-10-11 16:47:48,977 - INFO - Interpolation: Linear
+2023-10-11 16:47:48,977 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 16:47:48,977 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 16:47:48,977 - INFO - 
+2023-10-11 16:47:48,979 - INFO - ---State = SK --, interpoation = Linear-----
+2023-10-11 16:47:49,357 - INFO - ---Plotted graph for SK-Linear----
+2023-10-11 16:47:49,377 - INFO - ---Showing Sen Slope test for SK-Linear-----
+2023-10-11 16:47:49,378 - INFO - 
+2023-10-11 16:47:49,634 - INFO - ---Plotted graph for SK-Linear-Annual----
+2023-10-11 16:47:49,634 - INFO - ---Showing Sen Slope test for SK-Linear-Annual----
+2023-10-11 18:26:20,356 - INFO - States: Select State
+2023-10-11 18:26:20,360 - INFO - Season: Monthly
+2023-10-11 18:26:20,361 - INFO - Interpolation: Select Interpolation
+2023-10-11 18:26:20,361 - INFO - Years to Show: (1, 3, 5, 7, 9)
+2023-10-11 18:26:20,361 - INFO - Years to Extract: (1973, 2015)
+2023-10-11 18:26:20,361 - INFO - 
+2023-10-11 18:26:20,365 - INFO - ---State = Select State --, interpoation = Select Interpolation-----
+2023-10-11 18:28:15,401 - INFO - States: J&K
+2023-10-11 18:28:15,401 - INFO - Season: Monthly
+2023-10-11 18:28:15,401 - INFO - Interpolation: Cubic
+2023-10-11 18:28:15,401 - INFO - Years to Show: (3,)
+2023-10-11 18:28:15,401 - INFO - Years to Extract: (1951, 2015)
+2023-10-11 18:28:15,401 - INFO - 
+2023-10-11 18:28:15,402 - INFO - ---State = J&K --, interpoation = Cubic-----
+2023-10-11 18:28:15,770 - INFO - ---Plotted graph for J&K-Cubic----
+2023-10-11 18:28:15,798 - INFO - ---Showing Sen Slope test for J&K-Cubic-----
+2023-10-11 18:28:15,803 - INFO - 
+2023-10-11 18:28:16,074 - INFO - ---Plotted graph for J&K-Cubic-Annual----
+2023-10-11 18:28:16,074 - INFO - ---Showing Sen Slope test for J&K-Cubic-Annual----
+2023-10-14 02:18:40,102 - INFO - States: J&K
+2023-10-14 02:18:40,102 - INFO - Season: Monthly
+2023-10-14 02:18:40,103 - INFO - Analysis_type: Monthly
+2023-10-14 02:18:40,103 - INFO - Months: ['Apr']
+2023-10-14 02:18:40,103 - INFO - Interpolation: Cubic
+2023-10-14 02:18:40,103 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 02:18:40,103 - INFO - Years to Extract: (1967, 1998)
+2023-10-14 02:18:40,103 - INFO - Selected values logged.
+2023-10-14 02:18:40,103 - INFO - ---State = Jammu & Kashmir , Apr--, interpoation = Cubic-----
+2023-10-14 02:18:41,386 - INFO - ---Plotted graph for Jammu & Kashmir-Cubic-Apr----
+2023-10-14 02:18:41,450 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-Cubic-Apr----
+2023-10-14 02:18:41,467 - INFO - 
+2023-10-14 02:20:55,900 - INFO - States: J&K
+2023-10-14 02:20:55,901 - INFO - Season: Annually
+2023-10-14 02:20:55,901 - INFO - Analysis_type: Annually
+2023-10-14 02:20:55,901 - INFO - Months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+2023-10-14 02:20:55,901 - INFO - Interpolation: Nearest
+2023-10-14 02:20:55,901 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 02:20:55,901 - INFO - Years to Extract: (1970, 2003)
+2023-10-14 02:20:55,901 - INFO - Selected values logged.
+2023-10-14 02:20:56,733 - INFO - ---Plotted graph for Jammu & Kashmir-Nearest-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 02:20:56,769 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-Nearest-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 02:20:57,549 - INFO - ---Plotted graph for Jammu & Kashmir-Nearest-Annual----
+2023-10-14 02:20:57,562 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-Nearest-Annual----
+2023-10-14 02:21:19,750 - INFO - States: AP
+2023-10-14 02:21:19,750 - INFO - Season: ANNUALLY
+2023-10-14 02:21:19,750 - INFO - Interpolation: Nearest
+2023-10-14 02:21:19,750 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 02:21:19,750 - INFO - Years to Extract: (1961, 1993)
+2023-10-14 02:21:19,750 - INFO - Selected values logged.
+2023-10-14 02:21:19,750 - INFO - ---State = AP --, interpoation = Nearest-----
+2023-10-14 02:21:20,493 - INFO - ---Plotted graph for AP-Nearest----
+2023-10-14 02:21:20,531 - INFO - ---Showing Sen Slope test for AP-Nearest-----
+2023-10-14 02:21:20,542 - INFO - 
+2023-10-14 02:21:21,311 - INFO - ---Plotted graph for AP-Nearest-Annual----
+2023-10-14 02:21:21,330 - INFO - ---Showing Sen Slope test for AP-Nearest-Annual----
+2023-10-14 02:22:03,938 - INFO - States: HP
+2023-10-14 02:22:03,938 - INFO - Season: PostMonsoon
+2023-10-14 02:22:03,938 - INFO - Analysis_type: Seasonally
+2023-10-14 02:22:03,938 - INFO - Months: ['Sep', 'Nov', 'Oct']
+2023-10-14 02:22:03,941 - INFO - Interpolation: IDW
+2023-10-14 02:22:03,941 - INFO - Years to Show: [1, 5, 7, 9, 2]
+2023-10-14 02:22:03,941 - INFO - Years to Extract: (1969, 1993)
+2023-10-14 02:22:03,941 - INFO - Selected values logged.
+2023-10-14 02:22:04,691 - INFO - ---Plotted graph for Himachal Pradesh-IDW-['Sep', 'Nov', 'Oct']----
+2023-10-14 02:22:04,713 - INFO - ---Showing Sen Slope test for Himachal Pradesh-IDW-['Sep', 'Nov', 'Oct']----
+2023-10-14 02:22:05,380 - INFO - ---Plotted graph for Himachal Pradesh-IDW-Annual----
+2023-10-14 02:22:05,392 - INFO - ---Showing Sen Slope test for Himachal Pradesh-IDW-Annual----

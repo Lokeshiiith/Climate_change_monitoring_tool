@@ -1,0 +1,104 @@
+2023-10-14 03:13:54,084 - INFO - States: J&K
+2023-10-14 03:13:54,086 - INFO - Season: Annually
+2023-10-14 03:13:54,087 - INFO - Analysis_type: Annually
+2023-10-14 03:13:54,087 - INFO - Months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+2023-10-14 03:13:54,087 - INFO - Interpolation: IDW
+2023-10-14 03:13:54,087 - INFO - Years to Show: [1, 5]
+2023-10-14 03:13:54,089 - INFO - Years to Extract: (1961, 2015)
+2023-10-14 03:13:54,089 - INFO - Selected values logged.
+2023-10-14 03:13:56,333 - INFO - ---Plotted graph for Jammu & Kashmir-IDW-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 03:13:56,433 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-IDW-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 03:13:57,704 - INFO - ---Plotted graph for Jammu & Kashmir-IDW-Annual----
+2023-10-14 03:13:57,716 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-IDW-Annual----
+2023-10-14 03:33:57,308 - INFO - States: J&K
+2023-10-14 03:33:57,309 - INFO - Season: Annually
+2023-10-14 03:33:57,309 - INFO - Analysis_type: Annually
+2023-10-14 03:33:57,309 - INFO - Months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+2023-10-14 03:33:57,310 - INFO - Interpolation: Nearest
+2023-10-14 03:33:57,310 - INFO - Years to Show: [1, 5]
+2023-10-14 03:33:57,310 - INFO - Years to Extract: (1961, 2015)
+2023-10-14 03:33:57,310 - INFO - Selected values logged.
+2023-10-14 03:33:58,394 - INFO - ---Plotted graph for Jammu & Kashmir-Nearest-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 03:33:58,471 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-Nearest-['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']----
+2023-10-14 03:33:59,428 - INFO - ---Plotted graph for Jammu & Kashmir-Nearest-Annual----
+2023-10-14 03:33:59,445 - INFO - ---Showing Sen Slope test for Jammu & Kashmir-Nearest-Annual----
+2023-10-14 03:34:16,447 - INFO - States: AP
+2023-10-14 03:34:16,447 - INFO - Season: ANNUALLY
+2023-10-14 03:34:16,447 - INFO - Interpolation: Cubic
+2023-10-14 03:34:16,447 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 03:34:16,447 - INFO - Years to Extract: (1964, 2003)
+2023-10-14 03:34:16,447 - INFO - Selected values logged.
+2023-10-14 03:34:16,448 - INFO - ---State = AP --, interpoation = Cubic-----
+2023-10-14 03:34:17,286 - INFO - ---Plotted graph for AP-Cubic----
+2023-10-14 03:34:17,323 - INFO - ---Showing Sen Slope test for AP-Cubic-----
+2023-10-14 03:34:17,337 - INFO - 
+2023-10-14 03:34:18,126 - INFO - ---Plotted graph for AP-Cubic-Annual----
+2023-10-14 03:34:18,138 - INFO - ---Showing Sen Slope test for AP-Cubic-Annual----
+2023-10-14 04:01:03,815 - INFO - States: J&K
+2023-10-14 04:01:03,816 - INFO - Season: Winter
+2023-10-14 04:01:03,816 - INFO - Analysis_type: Seasonally
+2023-10-14 04:01:03,816 - INFO - Months: ['Mar', 'Feb', 'Jan']
+2023-10-14 04:01:03,816 - INFO - Interpolation: Nearest
+2023-10-14 04:01:03,817 - INFO - Years to Show: [1, 5]
+2023-10-14 04:01:03,817 - INFO - Years to Extract: (1961, 2015)
+2023-10-14 04:01:03,817 - INFO - Selected values logged.
+2023-10-14 04:01:56,550 - INFO - States: UK
+2023-10-14 04:01:56,550 - INFO - Season: Monsoon
+2023-10-14 04:01:56,550 - INFO - Analysis_type: Seasonally
+2023-10-14 04:01:56,551 - INFO - Months: ['Jul', 'Jun', 'Aug']
+2023-10-14 04:01:56,551 - INFO - Interpolation: Nearest
+2023-10-14 04:01:56,551 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 04:01:56,551 - INFO - Years to Extract: (1973, 1996)
+2023-10-14 04:01:56,551 - INFO - Selected values logged.
+2023-10-14 04:01:58,667 - INFO - ---Plotted graph for Uttarakhand-Nearest-['Jul', 'Jun', 'Aug']----
+2023-10-14 04:01:58,771 - INFO - ---Showing Sen Slope test for Uttarakhand-Nearest-['Jul', 'Jun', 'Aug']----
+2023-10-14 04:02:00,202 - INFO - ---Plotted graph for Uttarakhand-Nearest-Annual----
+2023-10-14 04:02:00,228 - INFO - ---Showing Sen Slope test for Uttarakhand-Nearest-Annual----
+2023-10-14 04:04:26,467 - INFO - States: UK
+2023-10-14 04:04:26,469 - INFO - Season: Winter
+2023-10-14 04:04:26,469 - INFO - Analysis_type: Seasonally
+2023-10-14 04:04:26,469 - INFO - Months: ['Apr', 'Mar', 'Feb']
+2023-10-14 04:04:26,469 - INFO - Interpolation: Cubic
+2023-10-14 04:04:26,469 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 04:04:26,469 - INFO - Years to Extract: (1981, 2001)
+2023-10-14 04:04:26,469 - INFO - Selected values logged.
+2023-10-14 04:04:28,185 - INFO - ---Plotted graph for Uttarakhand-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:28,258 - INFO - ---Showing Sen Slope test for Uttarakhand-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:29,260 - INFO - ---Plotted graph for Uttarakhand-Cubic-Annual----
+2023-10-14 04:04:29,271 - INFO - ---Showing Sen Slope test for Uttarakhand-Cubic-Annual----
+2023-10-14 04:04:45,166 - INFO - States: AP
+2023-10-14 04:04:45,166 - INFO - Season: Winter
+2023-10-14 04:04:45,166 - INFO - Analysis_type: Seasonally
+2023-10-14 04:04:45,166 - INFO - Months: ['Apr', 'Mar', 'Feb']
+2023-10-14 04:04:45,166 - INFO - Interpolation: Cubic
+2023-10-14 04:04:45,166 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 04:04:45,166 - INFO - Years to Extract: (1981, 2001)
+2023-10-14 04:04:45,166 - INFO - Selected values logged.
+2023-10-14 04:04:46,540 - INFO - ---Plotted graph for Aruranchal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:46,635 - INFO - ---Showing Sen Slope test for Aruranchal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:48,565 - INFO - ---Plotted graph for Aruranchal Pradesh-Cubic-Annual----
+2023-10-14 04:04:48,598 - INFO - ---Showing Sen Slope test for Aruranchal Pradesh-Cubic-Annual----
+2023-10-14 04:04:56,369 - INFO - States: AP
+2023-10-14 04:04:56,369 - INFO - Season: Winter
+2023-10-14 04:04:56,369 - INFO - Analysis_type: Seasonally
+2023-10-14 04:04:56,369 - INFO - Months: ['Apr', 'Mar', 'Feb']
+2023-10-14 04:04:56,369 - INFO - Interpolation: Cubic
+2023-10-14 04:04:56,369 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 04:04:56,370 - INFO - Years to Extract: (1966, 2015)
+2023-10-14 04:04:56,370 - INFO - Selected values logged.
+2023-10-14 04:04:57,683 - INFO - ---Plotted graph for Aruranchal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:57,740 - INFO - ---Showing Sen Slope test for Aruranchal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:04:58,906 - INFO - ---Plotted graph for Aruranchal Pradesh-Cubic-Annual----
+2023-10-14 04:04:58,919 - INFO - ---Showing Sen Slope test for Aruranchal Pradesh-Cubic-Annual----
+2023-10-14 04:05:11,223 - INFO - States: HP
+2023-10-14 04:05:11,223 - INFO - Season: Winter
+2023-10-14 04:05:11,223 - INFO - Analysis_type: Seasonally
+2023-10-14 04:05:11,223 - INFO - Months: ['Apr', 'Mar', 'Feb']
+2023-10-14 04:05:11,223 - INFO - Interpolation: Cubic
+2023-10-14 04:05:11,223 - INFO - Years to Show: [1, 5, 7, 9]
+2023-10-14 04:05:11,223 - INFO - Years to Extract: (1966, 2015)
+2023-10-14 04:05:11,223 - INFO - Selected values logged.
+2023-10-14 04:05:12,718 - INFO - ---Plotted graph for Himachal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:05:12,776 - INFO - ---Showing Sen Slope test for Himachal Pradesh-Cubic-['Apr', 'Mar', 'Feb']----
+2023-10-14 04:05:14,193 - INFO - ---Plotted graph for Himachal Pradesh-Cubic-Annual----
+2023-10-14 04:05:14,216 - INFO - ---Showing Sen Slope test for Himachal Pradesh-Cubic-Annual----
