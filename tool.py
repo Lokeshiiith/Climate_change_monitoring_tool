@@ -11,6 +11,17 @@ import numpy as np
 import logging
 import textwrap
 import streamlit as st
+try:
+    import openpyxl
+except ImportError:
+    st.error("Please wait while we install required dependencies...")
+    # Install the missing dependency
+    !pip install openpyxl
+    st.success("Dependencies installed successfully. Please refresh the page.")
+    import openpyxl  # Retry importing the library
+
+# Rest of your Streamlit app code
+
 # Ignore FutureWarnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 # Filter out the warning you want to suppress
