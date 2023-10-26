@@ -29,30 +29,32 @@ st.set_page_config(page_title="My Streamlit App",
                    page_icon=":rocket:", layout="centered")
 
 # Create a list of users and passwords
-users = {
-    "lokesh": "123",
-    "avantika": "123",
-}
-# Initialize session state
-if 'access_granted' not in st.session_state:
-    st.session_state.access_granted = False
-# Create a login form
-username = st.text_input("Username")
-password = st.text_input("Password", type="password")
-access_granted = False
+# users = {
+#     "lokesh": "123",
+#     "avantika": "123",
+# }
+# # Initialize session state
+# if 'access_granted' not in st.session_state:
+#     st.session_state.access_granted = False
+# # Create a login form
+# username = st.text_input("Username")
+# password = st.text_input("Password", type="password")
+access_granted = True
 # Check the username and password against the list of users and passwords
  # Check if the form is submitted
-if st.button("Login"):
-    if username in users and password == users[username]:
-        # Allow the user to access the app
-        st.write("Welcome, {}!".format(username))
-        st.session_state.access_granted = True
-    else:
-        # Display an error message
-        st.write("Invalid username or password")
-        st.session_state.access_granted = False
-else:
-    access_granted = False
+# if st.button("Login"):
+#     if username in users and password == users[username]:
+#         # Allow the user to access the app
+#         st.write("Welcome, {}!".format(username))
+#         st.session_state.access_granted = True
+#     else:
+#         # Display an error message
+#         st.write("Invalid username or password")
+#         st.session_state.access_granted = False
+# else:
+#     access_granted = False
+if 'access_granted' not in st.session_state:
+    st.session_state.access_granted = True 
 
 # If access is granted, display the navigation options
 if st.session_state.access_granted:    
@@ -212,20 +214,22 @@ if st.session_state.access_granted:
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.subheader("My Advisor (Advisor's Name)")
-            st.write("My advisor is a professor at [University Name] with expertise in [Advisor's Expertise].")
+            st.subheader("My Advisor (Dr. Shaik Rehana)")
+            st.write("Assistant Professor")
+            st.write("Lab for Spatial Informatics(LSI)")
+            st.write("IIIT, Hyderabad. with expertise in [Hydrologic Impacts of Climate Change].")
             
             st.image("./Images/srehana.jpg", use_column_width=True)
             # Link to Advisor's LinkedIn Profile
             advisor_linkedin = "[Advisor's LinkedIn Profile](Advisor's LinkedIn URL)"
             st.markdown(advisor_linkedin, unsafe_allow_html=True)
             # Link to Advisor's Research Papers
-            advisor_papers = "[Advisor's Research Papers](Advisor's Research Papers URL)"
+            advisor_papers = "[Advisor's Profile](https://lsi.iiit.ac.in/website/faculty/srehana/srehana.htm)"
             st.markdown(advisor_papers, unsafe_allow_html=True)
         
         with col2:
-            st.subheader("My Guide (Guide's Name)")
-            st.write("My guide is an PHD RESERCH at [University Name] specializing in [Guide's Specialization].")
+            st.subheader("My Guide (Avantika Latwal)")
+            st.write("My guide is an PHD RESERCH at [IIIT Hyderabad] specializing in [Guide's Specialization].")
             st.image("./Images/avantika.jpg", use_column_width=True)
             # Link to Guide's LinkedIn Profile
             guide_linkedin = "[Guide's LinkedIn Profile](Guide's LinkedIn URL)"
@@ -239,8 +243,8 @@ if st.session_state.access_granted:
 
         # Information about You
         with col3:
-            st.subheader("About Me (Your Name)")
-            st.write("I am a [Your Academic Year] student at [Your University]. My research interests include [Your Research Interests].")
+            st.subheader("About Me (Lokesh Sharma)")
+            st.write("I am a [M.Tech - CSE] student at [IIIT Hyderabad].")
             # Link to Your LinkedIn Profile
             st.image("./Images/lokesh.jpg", use_column_width=True)
             your_linkedin = "[Your LinkedIn Profile](Your LinkedIn URL)"
@@ -256,7 +260,7 @@ if st.session_state.access_granted:
 
     # Information about Temperature Analysis
     navigation = st.sidebar.radio("Select a Page", [
-                                "Introduction","Project Information", "Temperature Analysis", "Precipitation Analysis"])
+                                "Introduction","Project Information", "Temperature Analysis", "Precipitation Analysis","Problem Statement"])
 
     # Introduction Page
     if navigation == "Introduction":
@@ -649,6 +653,9 @@ if st.session_state.access_granted:
         selected_years_to_extract = st.slider(
             'Years to Extract:', 1961, 2015, (1961, 2015), 1)
 
+        selected_year_wise_analysis = st.radio(
+            'Year Wise Analysis:', [1, 2, 3, 4, 5]
+        )
         # Create dropdown widget for type of analysis
         selected_analysis_type = st.selectbox(
             'Type of Analysis:', ['Select Analysis', 'Monthly', 'Annually', 'Seasonally'])
@@ -723,6 +730,7 @@ if st.session_state.access_granted:
             selected_interpolation = None
             selected_years_to_show = [1, 5]
             selected_years_to_extract = [1961, 2015]
+            selected_year_wise_analysis = 1
             Season = 'Monthly'
 
         # Display the output area
@@ -1058,3 +1066,175 @@ if st.session_state.access_granted:
 
         # Display the output area
         output = st.empty()
+
+
+    if navigation == "Problem Statement":
+        plt.title("Himalayan Mountain")
+
+        def printSinCurve():
+            """
+            The Himalayan mountain range is a diverse landscape with a wide range of vegetation types.
+            Vegetation changes with elevation, and each type is adapted to the specific climate conditions at that altitude.
+            """
+        def printTimberline():
+            """
+            The timberline is the boundary between where trees can and cannot grow.
+            It's a critical line for biodiversity and an important indicator of climate change.
+            As the climate warms, the timberline is moving higher up the mountain, shrinking the area where trees can grow.
+            """
+        def printtreeline():
+            """
+            The treeline is the boundary between where trees can and cannot grow.
+            The trees in the treeline are stunted and gnarled, and the vegetation is sparse.
+            The treeline is also moving higher up the mountain as the climate warms.
+            """
+        def printbelowTimberline():
+            """
+            Below the timberline, the vegetation is lush and diverse.
+            There are a wide range of tree species, as well as shrubs, wildflowers, and grasses.
+            This vegetation provides habitat for a wide range of animals.
+            """
+        def printaboveTimber_belowTreeline():
+            """
+            Between the timberline and the treeline is a transition zone where the vegetation is mixed.
+            This vegetation is more tolerant of cold and wind than the vegetation below the timberline.
+            """
+        def printaboveTreeline():
+            """
+            Above the treeline, the vegetation is sparse.
+            There are a few hardy plants, such as lichens and mosses, but there are no trees.
+            The climate in this area is cold and windy, and the growing season is short.
+        """
+
+        def printWhatsProblem():
+           
+            """What and why is that happpeing ?:
+            The shift of alpine meadows to higher altitudes is primarily a consequence of global climate change.
+            As temperatures rise due to various environmental factors, including the increase in greenhouse gases, these previously stable ecosystems are now experiencing significant shifts.
+
+            The key factors contributing to this shift are:
+
+            1. Temperature Increase: Rising global temperatures are causing a "thermal migration" of plant life, including alpine meadows. 
+            As temperatures become warmer, these meadows are gradually moving to higher altitudes in search of cooler conditions that are essential for their survival.
+
+            2. Altered Precipitation Patterns: Changes in precipitation patterns further influence the distribution of alpine meadows. 
+            Inconsistent rainfall and altered snowfall patterns are affecting the availability of water in these ecosystems, prompting them to move to more favorable locations.
+
+            3. Competitive Advantage: Alpine meadows are often highly adaptable and competitive plant species. 
+            They may outcompete endemic species in their new locations, leading to a displacement of the native flora.
+
+            4. Loss of Endemic Species: The shift of alpine meadows into higher altitudes can indeed pose a threat to endemic species. 
+            As these meadows spread, they may displace the native plant life, potentially leading to the extinction of endemic species that are adapted to the unique conditions of their original habitats.
+            """
+        # make alist of these print functions
+
+        def sincurve():
+            angles = np.linspace(0, 180, 1000)
+            y = np.sin(np.deg2rad(angles))
+            plt.plot(angles, y)
+
+        def timberline():
+            sincurve()
+            timberline = 0.3
+            plt.axhline(y=timberline, color='g', linestyle='--', label='')
+            plt.text(180, timberline, 'timberline', verticalalignment='bottom', horizontalalignment='right', color='r')
+            plt.legend(loc='upper right', frameon=False)
+
+        def treeline():
+            sincurve()
+            timberline()
+            treeline = 0.7
+            plt.axhline(y=treeline, color='r', linestyle='--', label='')
+            plt.text(180, treeline, 'treeline', verticalalignment='bottom', horizontalalignment='right', color='r')
+            plt.legend(loc='upper right', frameon=False)
+
+        def belowTimberline():
+            sincurve()
+            timberline()
+            treeline()
+            x = np.random.uniform(25, 150, 300)
+            y = np.random.uniform(0, 0.28, 300)
+            plt.scatter(x, y, c='g', s=50)
+            plt.annotate("Well Flourished", xy=(155, 0.2), xytext=(160, 0.1),
+                        arrowprops=dict(facecolor='green', shrink=0.05), fontsize=12)
+
+        def aboveTimber_belowTreeline():
+            sincurve()
+            timberline()
+            treeline()
+            belowTimberline()
+            x = np.random.uniform(50, 130, 70)
+            y = np.random.uniform(0.3, 0.7, 70)
+            plt.scatter(x, y, c='g', s=50)
+            plt.annotate("Less dense", xy=(135, 0.6), xytext=(140, 0.5),
+                        arrowprops=dict(facecolor='green', shrink=0.05), fontsize=12)
+
+        def aboveTreeline():
+            endemic_points = [
+                (50, .75),
+                (52, .8),
+                (54, .8),
+                (75, .74),
+                (77, .87),
+                (79, .8),
+                (110, .8),
+                (102, .8),
+                (104, .8),
+                (120, .74),
+                (127, .75),
+                ]   
+            sincurve()
+            timberline()
+            treeline()
+            belowTimberline()
+            aboveTimber_belowTreeline()
+            selected_indices = np.random.choice(range(len(endemic_points)), 6)
+            selected_endemic_points = [endemic_points[i] for i in selected_indices]
+            x_endemic, y_endemic = zip(*selected_endemic_points)
+            
+            plt.scatter(x_endemic, y_endemic, c='r', s=50, label='Endemic Species')
+            plt.legend(loc='upper right')  # Add a legend for clarity
+            plt.annotate("Endemic species", xy=(125, 0.8), xytext=(130, 0.8),
+                        arrowprops=dict(facecolor='red', shrink=0.05), fontsize=12)
+        
+        def WhatsProblem():
+            sincurve()
+            timberline()
+            treeline()
+            plt.annotate("What is the problem then", xy=(135, 0.6), xytext=(140, 0.5),
+                        arrowprops=dict(facecolor='red', shrink=0.05), fontsize=12)
+            plt.annotate("Alpine meadow shift", xy=(115, 0.85), xytext=(120, 0.2),
+                        arrowprops=dict(facecolor='red', shrink=0.05), fontsize=12)
+        # Initial data
+            red_x = np.random.uniform(70, 110, 2)
+            red_y = np.random.uniform(0.75, .9, 2)
+            green_x = np.random.uniform(90, 110, 5)
+            green_y = np.random.uniform(0.75, .9, 5)
+            plt.scatter(red_x, red_y, c='r', s=50)
+            plt.scatter(green_x, green_y, c='g', s=50)
+
+        printfunctions = [printSinCurve, printTimberline, 
+                        printtreeline, printbelowTimberline, 
+                        printaboveTimber_belowTreeline, printaboveTreeline, printWhatsProblem]
+        functions = [sincurve, timberline, 
+                    treeline, belowTimberline,
+                    aboveTimber_belowTreeline, 
+                    aboveTreeline, WhatsProblem]
+        current_function_index = st.session_state.get("current_function_index", 0)
+
+
+        # Call the selected function and display it
+        st.write(functions[current_function_index].__doc__)
+        st.write(printfunctions[current_function_index].__doc__)
+        functions[current_function_index]()
+        st.pyplot()
+        if st.button("Previous"):
+            current_function_index = (current_function_index - 1) % len(functions)
+            st.session_state.current_function_index = current_function_index
+
+        if st.button("Next"):
+            current_function_index = (current_function_index + 1) % len(functions)
+            st.session_state.current_function_index = current_function_index
+
+
+ 
