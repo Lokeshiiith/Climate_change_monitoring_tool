@@ -260,7 +260,7 @@ if st.session_state.access_granted:
 
     # Information about Temperature Analysis
     navigation = st.sidebar.radio("Select a Page", [
-                                "Introduction","Project Information", "Temperature Analysis", "Precipitation Analysis","Problem Statement"])
+                                "Introduction","Project Information", "Temperature Analysis", "Precipitation Analysis","Problem Statements"])
 
     # Introduction Page
     if navigation == "Introduction":
@@ -1068,7 +1068,7 @@ if st.session_state.access_granted:
         output = st.empty()
 
 
-    if navigation == "Problem Statement":
+    if navigation == "Problem Statements":
         plt.title("Himalayan Mountain")
 
         def printSinCurve():
