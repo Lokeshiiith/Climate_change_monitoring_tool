@@ -543,3 +543,17 @@
 2023-10-26 19:13:14,765 - WARNING - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 2023-10-26 19:13:14,768 - WARNING - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 2023-10-26 19:13:14,771 - WARNING - No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2023-11-03 15:59:10,737 - INFO - States: UK
+2023-11-03 15:59:10,738 - INFO - Season: Monthly
+2023-11-03 15:59:10,739 - INFO - Analysis_type: Monthly
+2023-11-03 15:59:10,739 - INFO - Months: ['Apr']
+2023-11-03 15:59:10,739 - INFO - Interpolation: Cubic
+2023-11-03 15:59:10,739 - INFO - Years to Show: [1, 5, 7]
+2023-11-03 15:59:10,739 - INFO - Years to Extract: (1972, 1998)
+2023-11-03 15:59:10,739 - INFO - Selected values logged.
+2023-11-03 15:59:10,869 - INFO - ---State = Uttarakhand , Apr--, interpoation = Cubic-----
+2023-11-03 15:59:11,541 - INFO - ---Plotted graph for Uttarakhand-Cubic-Apr----
+2023-11-03 15:59:11,572 - INFO - ---Showing Sen Slope test for Uttarakhand-Cubic-Apr----
+2023-11-03 15:59:11,584 - INFO - 
+2023-11-03 15:59:11,984 - INFO - ---Plotted graph for Uttarakhand-Cubic-Apr mean----
+2023-11-03 15:59:11,991 - INFO - ---Temperature Analysis : Showing Sen Slope test for Uttarakhand-Cubic-Apr mean----

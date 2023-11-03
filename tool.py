@@ -215,13 +215,13 @@ if st.session_state.access_granted:
 
         with col1:
             st.subheader("My Advisor (Dr. Shaik Rehana)")
-            st.write("Assistant Professor")
+            st.write("Associate Professor")
             st.write("Lab for Spatial Informatics(LSI)")
             st.write("IIIT, Hyderabad. with expertise in [Hydrologic Impacts of Climate Change].")
             
             st.image("./Images/srehana.jpg", use_column_width=True)
             # Link to Advisor's LinkedIn Profile
-            advisor_linkedin = "[Advisor's LinkedIn Profile](Advisor's LinkedIn URL)"
+            advisor_linkedin = "[Advisor's LinkedIn Profile](https://www.linkedin.com/in/dr-rehana-shaik-1b59276b)"
             st.markdown(advisor_linkedin, unsafe_allow_html=True)
             # Link to Advisor's Research Papers
             advisor_papers = "[Advisor's Profile](https://lsi.iiit.ac.in/website/faculty/srehana/srehana.htm)"
@@ -229,15 +229,15 @@ if st.session_state.access_granted:
         
         with col2:
             st.subheader("My Guide (Avantika Latwal)")
-            st.write("My guide is an PHD RESERCH at [IIIT Hyderabad] specializing in [Guide's Specialization].")
+            st.write("Research Associate and Ph.D. Scholar at International Institute of Information Technology")
             st.image("./Images/avantika.jpg", use_column_width=True)
             # Link to Guide's LinkedIn Profile
-            guide_linkedin = "[Guide's LinkedIn Profile](Guide's LinkedIn URL)"
+            guide_linkedin = "[Guide's LinkedIn Profile](https://www.linkedin.com/in/avantika-latwal/)"
             st.markdown(guide_linkedin, unsafe_allow_html=True)
 
             # Link to Guide's Research Papers
-            guide_papers = "[Guide's Research Papers](Guide's Research Papers URL)"
-            st.markdown(guide_papers, unsafe_allow_html=True)
+            # guide_papers = "[Guide's Research Papers](Guide's Research Papers URL)"
+            # st.markdown(guide_papers, unsafe_allow_html=True)
 
         # Information about Your Advisoravantika
 
@@ -247,11 +247,11 @@ if st.session_state.access_granted:
             st.write("I am a [M.Tech - CSE] student at [IIIT Hyderabad].")
             # Link to Your LinkedIn Profile
             st.image("./Images/lokesh.jpg", use_column_width=True)
-            your_linkedin = "[Your LinkedIn Profile](Your LinkedIn URL)"
+            your_linkedin = "[Your LinkedIn Profile](https://www.linkedin.com/in/lokesh-sharma-b40a77164/)"
             st.markdown(your_linkedin, unsafe_allow_html=True)
             # Link to Your Research Papers
-            your_papers = "[Your Research Papers](Your Research Papers URL)"
-            st.markdown(your_papers, unsafe_allow_html=True)
+            # your_papers = "[Your Research Papers](Your Research Papers URL)"
+            # st.markdown(your_papers, unsafe_allow_html=True)
 
 
         # Information about Your Guide
@@ -653,9 +653,9 @@ if st.session_state.access_granted:
         selected_years_to_extract = st.slider(
             'Years to Extract:', 1961, 2015, (1961, 2015), 1)
 
-        selected_year_wise_analysis = st.radio(
-            'Year Wise Analysis:', [1, 2, 3, 4, 5]
-        )
+        # selected_year_wise_analysis = st.radio(
+        #     'Year Wise Analysis:', [1, 2, 3, 4, 5]
+        # )
         # Create dropdown widget for type of analysis
         selected_analysis_type = st.selectbox(
             'Type of Analysis:', ['Select Analysis', 'Monthly', 'Annually', 'Seasonally'])
