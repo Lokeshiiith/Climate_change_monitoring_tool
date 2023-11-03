@@ -260,7 +260,7 @@ if st.session_state.access_granted:
 
     # Information about Temperature Analysis
     navigation = st.sidebar.radio("Select a Page", [
-                                "Introduction","Project Information", "Temperature Analysis", "Precipitation Analysis","Problem Statements"])
+                                "Introduction","Project Information","Problem Statements", "Temperature Analysis", "Precipitation Analysis"])
 
     # Introduction Page
     if navigation == "Introduction":
