@@ -976,7 +976,7 @@ if st.session_state.access_granted:
             AltitudeRange = df['Altitude Range'].values
             return MinMaxRange, AltitudeRange
 
-        def DoComputations1(state, interpolation, x_ticks, YearsRange, Season):
+        def DoComputations(state, interpolation, x_ticks, YearsRange, Season):
             YearsRange = [str(year) for year in YearsRange]
             interpolatoinRangeWisePath = './PrecipitaionAnalysis/InterpolateRangeWise'
             name = state
@@ -1105,7 +1105,7 @@ if st.session_state.access_granted:
             Years = list(
                 range(selected_years_to_extract[0], selected_years_to_extract[1]+1))
 
-            DoComputations1(state, Interpolation, ModVal,
+            DoComputations(state, Interpolation, ModVal,
                             Years, Season)  # Fixed this line
 
         # Add a clear button
