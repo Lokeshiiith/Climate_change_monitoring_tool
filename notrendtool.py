@@ -273,7 +273,22 @@ if st.session_state.access_granted:
     # Information about Temperature Analysis
     navigation = st.sidebar.radio("Select a Page", [
                                 "Introduction","Project Information","Problem Statements", "Temperature Analysis", "Precipitation Analysis"])
+    import socket
+    import logging
+    import datetime
 
+    # Get the visitor's hostname, location, and time
+    hostname = socket.gethostname()
+    location = socket.gethostbyname(hostname)
+    now = datetime.datetime.now()
+
+    # Display the visitor's hostname, location, and time in the Streamlit app
+    st.write(f"Hi : {hostname}")
+
+    # Log the visitor's hostname, location, and time
+    logging.info(f"-------visitor's name------: {hostname}")
+    logging.info(f"-------visitor's location------: {location}")
+    logging.info(f"-------visitor's time------: {now}")
     # Introduction Page
     if navigation == "Introduction":
         st.write("Introduction Page")
