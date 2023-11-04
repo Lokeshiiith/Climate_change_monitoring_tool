@@ -8,5 +8,3 @@ tabulate
 streamlit
 openpyxl 
 plotly
-folium
-statsmodels
