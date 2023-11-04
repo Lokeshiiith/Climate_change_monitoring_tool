@@ -18,9 +18,10 @@ import plotly.graph_objs as go
 try:
     import statsmodels.api as sm
 except ImportError:
+    import subprocess
     subprocess.check_call(['pip', 'install', 'statsmodels'])
     import statsmodels.api as sm
-    
+
 try:
     import openpyxl
 except ImportError:
