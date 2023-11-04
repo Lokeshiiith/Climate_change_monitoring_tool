@@ -14,7 +14,7 @@ import streamlit as st
 from scipy.stats import linregress
 import plotly.express as px
 import plotly.graph_objs as go
-
+import statsmodels.api as sm
 try:
     import openpyxl
 except ImportError:
