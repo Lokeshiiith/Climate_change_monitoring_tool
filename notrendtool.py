@@ -475,7 +475,7 @@ if st.session_state.access_granted:
             fig.update_xaxes(tickvals=x_labels, ticktext=x_values)
                 # Customize the legend
             fig.update_layout(legend_title_text='Altitude(200 mtr) range')
-            fig.update_traces(hovertemplate='<br>Year: %{x}<br>Temperature (°C):%{y} ')
+            # fig.update_traces(hovertemplate='<br>Year: %{x}<br>Temperature (°C):%{y} ')
 
             st.plotly_chart(fig)
 
@@ -956,7 +956,7 @@ if st.session_state.access_granted:
             fig.update_xaxes(title="Years of Time Series")
             fig.update_yaxes(title="Average Precipiataion (mm)")
             fig.update_xaxes(tickvals=x_labels, ticktext=x_values)
-            fig.update_traces(hovertemplate='<br>Year: %{x}<br>Precipitation(mm):%{y} ')
+            # fig.update_traces(hovertemplate='<br>Year: %{x}<br>Precipitation(mm):%{y} ')
 
                 # Customize the legend
             fig.update_layout(legend_title_text='Altitude(200 mtr) range')
