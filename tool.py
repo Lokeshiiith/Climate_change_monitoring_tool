@@ -14,14 +14,19 @@ import streamlit as st
 from scipy.stats import linregress
 import plotly.express as px
 import plotly.graph_objs as go
-import statsmodels.api as sm
+
+try:
+    import statsmodels.api as sm
+except ImportError:
+    subprocess.check_call(['pip', 'install', 'statsmodels'])
+    import statsmodels.api as sm
+    
 try:
     import openpyxl
 except ImportError:
     import subprocess
     subprocess.check_call(['pip', 'install', 'openpyxl'])
     import openpyxl  # Retry importing the library
-
 # Rest of your Streamlit app code
 
 # Ignore FutureWarnings
