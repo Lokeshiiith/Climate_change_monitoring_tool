@@ -11,6 +11,10 @@ import numpy as np
 import logging
 import textwrap
 import streamlit as st
+from scipy.stats import linregress
+import plotly.express as px
+import plotly.graph_objs as go
+
 try:
     import openpyxl
 except ImportError:
@@ -60,6 +64,8 @@ if 'access_granted' not in st.session_state:
 if st.session_state.access_granted:    
 
     def getgetR_square(state,_path):
+        if state == 'J&K':
+            return 42
         df = pd.read_excel(_path)
         # Select rows where 'Month' is 'Annual'
         df = df[df['State'] == state]
@@ -272,7 +278,14 @@ if st.session_state.access_granted:
 
     if navigation == "Temperature Analysis":
         st.title("Temperature Analysis Page")
-
+        def highlight_trend_column(val):
+                if val != 'no trend':
+                    return f'background-color: red'  # Change the background color to yellow for rows with trend
+                return ''  # Default style
+        def highlight_result_column(val):
+            if val == 'Reject':
+                return f'background-color: green'  # Change the background color to yellow for rows with trend
+            return ''  # Default style
         def PrintSenSlopeTest(df, state_name, month, interpolation, YearRange, Season):
             if Season == 'Annually':
                 month = ['Annual']
@@ -313,14 +326,15 @@ if st.session_state.access_granted:
                     result = "Reject"
                 else:
                     result = "Fail to reject"
-                results.append([selected_state, month, altitude_range,
-                                year_range, interpolation,  p_value, slope, result])
+                results.append([selected_state, month, altitude_range, interpolation,  p_value, slope, result,year_range])
 
             # Print the extracted state name
             # Create a DataFrame from the results list
             results_df = pd.DataFrame(results, columns=[
-                'State', 'Month', 'Altitude Range', 'year_range', 'Interpolation', 'p-value', 'slope', 'Result'])
-            st.dataframe(results_df)
+                'State', 'Month', 'Altitude Range', 'Interpolation', 'p-value', 'slope', 'Result', 'year_range'])
+            styled_df = results_df.style.applymap(highlight_result_column, subset=['Result'])
+            st.dataframe(styled_df, width=1500)
+            # st.dataframe(results_df)
             # Display result explanations
             st.write("Result Explanations:")
             outcomes = {
@@ -329,7 +343,9 @@ if st.session_state.access_granted:
             }
 
             for outcome, description in outcomes.items():
-                st.write(f"{outcome}:\n{description}")
+                st.write(f"{outcome}:\n{description}",)
+        # Define the custom style function
+ 
 
         def PrintMankendallTest(df, State, month, interpolation, YearRange, Season):
             # Create a list to store the results
@@ -372,16 +388,18 @@ if st.session_state.access_granted:
                 slope = round(float(slope), 5)
 
                 # Append the results to the list
-                results.append([selected_state, month, altitude_range, year_range,
-                                interpolation, p_value, z_test_statics, trend])
+                results.append([selected_state, month, altitude_range,
+                                interpolation, p_value, z_test_statics, trend, year_range])
 
             # results_df = pd.DataFrame(results, columns=['Altitude Range', 'Interpolation', 'Trend', 'Tau', 'p-value', 'Slope'])
             results_df = pd.DataFrame(results, columns=[
-                'State', 'Month', 'Altitude Range', 'year_range', 'Interpolation', 'p-value', 'z_test_statics', 'Trend'])
+                'State', 'Month', 'Altitude Range', 'Interpolation', 'p-value', 'z_test_statics', 'Trend', 'year_range'])
             # Print the DataFrame beautifully
-            st.dataframe(results_df)
-            print(tabulate(results_df, headers='keys',
-                        tablefmt='fancy_grid', showindex=False))
+            # Apply the style function to the DataFrame
+            styled_df = results_df.style.applymap(highlight_trend_column, subset=['Trend'])
+            st.dataframe(styled_df)
+            tabulate(results_df, headers='keys',
+                        tablefmt='fancy_grid', showindex=False)
             outcomes = {
                 'p-value < 0.05, z_test_statics > 0':	'Statistically significant increasing trend',
                 'p-value < 0.05, z_test_statics < 0':	'Statistically significant decreasing trend',
@@ -390,14 +408,14 @@ if st.session_state.access_granted:
             }
             for outcome, description in outcomes.items():
                 formatted_text = textwrap.fill(description, width=60)
-                st.write(f"{outcome}:\n{formatted_text}")
+                st.write(f"{outcome}:\n{formatted_text}",)
 
         def ShowGraphTemp(df, month, State, interpolation, x_ticks, YearRange, Season):
             # Set the 'Altitude Range' column as the index
-            print(Season)
+            # print(Season)
             if Season == 'Annually':
                 month = ['Annual']
-            if 'Altitude Range' in df.columns:
+            if 'Altitude Range' in df.columns:#any name possible
                 df.set_index('Altitude Range', inplace=True)
             elif 'Altitude range' in df.columns:
                 df.set_index('Altitude range', inplace=True)
@@ -415,34 +433,46 @@ if st.session_state.access_granted:
             YearRange = [str(year) for year in YearRange]
             yearcounted = int(YearRange[-1]) - int(YearRange[0]) + 1
             year_range = f'{YearRange[0]} - {YearRange[-1]} #({yearcounted} years timeseries)'
-            plt.figure(figsize=(12, 20))
-            # Create a line plot
-            ax = df.T.plot(kind='line', marker='o')
             extrayear = '2015'
             # Customize the plot (labels, title, etc.)
-            plt.xlabel('Years of Time Series')
-            plt.ylabel('Average Annual Temperature (°C)')
+            # plt.xlabel('Years of Time Series')
+            # plt.ylabel('Average Annual Temperature (°C)')
+            title = None
             if Season == 'Seasonally':
-                plt.title(
-                    f'State={selected_state}, interpolation={interpolation}, Season = {Season}, Months = {month} on Mean Average Temperature\n{year_range}')
-
+                title = f'State={selected_state}, interpolation={interpolation}, Season = {Season}, Months = {month} on Mean Average Temperature\n{year_range}'
             elif Season == 'Annually':
-                plt.title(
-                    f'State={selected_state}, interpolation={interpolation}, Annually on Mean Average Temperature\n{year_range}')
+                title = f'State={selected_state}, interpolation={interpolation}, Annually on Mean Average Temperature\n{year_range}'
             else:
-                plt.title(
-                    f'State - {selected_state} using {interpolation} interpolation for month = {month} ,{Season} mean Average Temperature\n{year_range}')
+                title = f'State = {selected_state} using {interpolation} interpolation \nfor month = {month} ,{Season}\n mean Average Temperature\n{year_range}'
 
             # Customize the x-axis tick labels to emphasize every 10 years
             x_values = list(df.columns)
-            # x_labels = [year if int(year) % 10  in yeartoshow else year for year in x_values]
+            # # x_labels = [year if int(year) % 10  in yeartoshow else year for year in x_values]
+            # x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
+            #             extrayear else '' for year in x_values]
+            # plt.xticks(range(len(x_values)), x_labels, rotation=75)
+            # # Move the legend outside the plot to the upp   er right
+            # plt.legend(title='Altitude(200 mtr) range',
+            #         loc='upper left', bbox_to_anchor=(1, 1))
+            # st.pyplot()
+            # Create a line plot using Plotly Express
+            # Split the selected year range to get start and end years
+            df= df.loc[:, YearRange]
+            # trendline_trace = gettrendline(df, x_values)
+            fig1 = px.line(df.T, x=df.columns, y=df.index, markers=True, title=title)
+            fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="lowess", opacity = 0.2, render_mode = 'svg')
+            fig = go.Figure(data = fig1.data + fig2.data)
             x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
                         extrayear else '' for year in x_values]
-            plt.xticks(range(len(x_values)), x_labels, rotation=75)
-            # Move the legend outside the plot to the upp   er right
-            plt.legend(title='Altitude(200 mtr) range',
-                    loc='upper left', bbox_to_anchor=(1, 1))
-            st.pyplot()
+            fig.update_xaxes(title="Year")
+            fig.update_yaxes(title="Temperature (°C)")
+            fig.update_xaxes(tickvals=x_labels, ticktext=x_values)
+                # Customize the legend
+            fig.update_layout(legend_title_text='Altitude(200 mtr) range')
+            fig.update_traces(hovertemplate='<br>Year: %{x}<br>Temperature (°C):%{y} ')
+
+            st.plotly_chart(fig)
+
 
         def getresults(results, MinMaxRange):
             year_wise_data = results.iloc[0:, 0:]
@@ -503,7 +533,6 @@ if st.session_state.access_granted:
                         f'---Showing Sen Slope test for {selected_state}-{interpolation}-{month}----')
                     PrintSenSlopeTest(df, state, month,
                                     interpolation, YearsRange, Season)
-
                     logging.info('')
                     st.write('Shoing Complete state graph')
                     # Now get mean of all rows leaving first column
@@ -531,7 +560,6 @@ if st.session_state.access_granted:
                     f'---Temperature Analysis : Showing Sen Slope test for {selected_state}-{interpolation}-{monthname} mean----')
                 PrintSenSlopeTest(df, state, monthname,
                                 interpolation, YearsRange, Season)
-
             elif Analysis_type == 'Annually' or Analysis_type == 'Seasonally':
                 _path_ = interpolatoinRangeWisePath + \
                     f'/{state}/{interpolation}200'
@@ -590,7 +618,6 @@ if st.session_state.access_granted:
                     f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-{Months}')
                 PrintSenSlopeTest(df, state, Months,
                                 interpolation, YearsRange, Season)
-
                 # Now show complete analysis for all altitude range
                 modified_df = getresults(df, MinMaxRange)
                 ShowGraphTemp(modified_df, Months, state, interpolation,
@@ -609,7 +636,6 @@ if st.session_state.access_granted:
                     f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-Annually')
                 PrintSenSlopeTest(modified_df, state, Months,
                                 interpolation, YearsRange, Season)
-
         ## ------------------------------------------Python code for Streamlit App------------------------------------------##
         # Set up logging
         log_filename = './Logfiles.log'
@@ -646,6 +672,7 @@ if st.session_state.access_granted:
             'Select Interpolation', 'Linear', 'Cubic', 'Nearest', 'IDW', 'MIDW'])
 
         # Create a multi-option widget for 'yearstoshow_Multioption'
+        st.write("Years to Show: To customize the graph's time scale. For instance, choosing '1' and '5' displays ticks at years like 1951, 1955, 1961, 1965 and so on..")
         selected_years_to_show = st.multiselect(
             'Years to Show:', list(range(10)), [1, 5])
 
@@ -742,6 +769,14 @@ if st.session_state.access_granted:
     if navigation == "Precipitation Analysis":
         st.title("Precipitation Analysis Page")
         # Your precipitation analysis code here
+        def highlight_trend_column(val):
+            if val != 'no trend':
+                return f'background-color: red'  # Change the background color to yellow for rows with trend
+            return ''  # Default style
+        def highlight_result_column(val):
+            if val == 'Reject':
+                return f'background-color: green'  # Change the background color to yellow for rows with trend
+            return ''  # Default style
         def PrintSenSlopeTest(df, state_name, interpolation, YearRange, Season):
             results = []
             YearRange = [str(year) for year in YearRange]
@@ -778,14 +813,16 @@ if st.session_state.access_granted:
                     result = "Reject"
                 else:
                     result = "Fail to reject"
-                results.append([selected_state, altitude_range, year_range,
-                                interpolation,  p_value, slope, result])
+                results.append([selected_state, altitude_range,
+                                interpolation,  p_value, slope, result, year_range])
 
             # Print the extracted state name
             # Create a DataFrame from the results list
             results_df = pd.DataFrame(results, columns=[
-                'State', 'Altitude Range', 'Year Range', 'Interpolation', 'p-value', 'Slope', 'Result'])
-            st.dataframe(results_df)
+                'State', 'Altitude Range', 'Interpolation', 'p-value', 'Slope', 'Result', 'Year Range'])
+            styled_df = results_df.style.applymap(highlight_result_column, subset=['Result'])
+            st.dataframe(styled_df)
+
             # Display result explanations
             st.write("Result Explanations:")
             outcomes = {
@@ -796,10 +833,10 @@ if st.session_state.access_granted:
             for outcome, description in outcomes.items():
                 st.write(f"{outcome}:\n{description}")
             # Print formatted outcomes
-            for outcome, description in outcomes.items():
-                # Adjust the width as needed
-                formatted_text = textwrap.fill(description, width=60)
-                print(f"{outcome}:\n{formatted_text}\n")
+            # for outcome, description in outcomes.items():
+            #     # Adjust the width as needed
+            #     formatted_text = textwrap.fill(description, width=60)
+            #     print(f"{outcome}:\n{formatted_text}\n")
 
         def PrintMankendallTest(df, State, interpolation, YearRange, Season):
             # Create a list to store the results
@@ -844,15 +881,17 @@ if st.session_state.access_granted:
                 slope = round(float(slope), 5)
 
                 # Append the results to the list
-                results.append([selected_state, altitude_range, year_range,
-                                interpolation, p_value, z_test_statics, trend])
+                results.append([selected_state, altitude_range,
+                                interpolation, p_value, z_test_statics, trend, year_range])
 
             # results_df = pd.DataFrame(results, columns=['Altitude Range', 'Interpolation', 'Trend', 'Tau', 'p-value', 'Slope'])
             results_df = pd.DataFrame(results, columns=[
-                'State', 'Altitude Range', 'Year Range', 'Interpolation', 'p-value', 'z_test_statics', 'Trend'])
-            st.dataframe(results_df)
-            print(tabulate(results_df, headers='keys',
-                        tablefmt='fancy_grid', showindex=False))
+                'State', 'Altitude Range', 'Interpolation', 'p-value', 'z_test_statics', 'Trend', 'Year Range'])
+            styled_df = results_df.style.applymap(highlight_trend_column, subset=['Trend'])
+            
+            st.dataframe(styled_df)
+            # print(tabulate(results_df, headers='keys',
+                        # tablefmt='fancy_grid', showindex=False))
             outcomes = {
                 'p-value < 0.05, z_test_statics > 0':	'Statistically significant increasing trend',
                 'p-value < 0.05, z_test_statics < 0':	'Statistically significant decreasing trend',
@@ -860,7 +899,7 @@ if st.session_state.access_granted:
                 'Note ': 'It is a non-parametric measure, so it does not make any assumptions about the distribution of the data.'
             }
             for outcome, description in outcomes.items():
-                formatted_text = textwrap.fill(description, width=60)
+                formatted_text = textwrap.fill(description, width=100)
                 st.write(f"{outcome}:\n{formatted_text}")
 
         def ShowGraphTemp(df, State, interpolation, x_ticks, YearRange, Season):
@@ -886,27 +925,36 @@ if st.session_state.access_granted:
             selected_state = state_mapping[State]
             # Create a line plot
             ax = df.T.plot(kind='line', marker='o')
+            x_values = list(df.columns)
+            # Add a trendline to the plot
+            # for altitude_range in df.index:
+            #     values = df.loc[altitude_range].values
+            #     x = np.arange(len(x_values))
+            #     slope, intercept, r_value, p_value, std_err = linregress(x, values)
+            #     trendline = intercept + slope * x
+            #     ax.plot(x, trendline, label=f'Trendline ({altitude_range})', linestyle='--')
             extrayear = '2015'
             # Customize the plot (labels, title, etc.)
-            plt.xlabel('Years of Time Series')
-            plt.ylabel('Average Average Precipitation')
-
-            plt.title(
-                f'State - {selected_state} using {interpolation} interpolation for Annual Average Precipitation\n{year_range}')
-
+            # plt.xlabel('Years of Time Series')
+            # plt.ylabel('Average Average Precipitation')
+            title = f'State - {selected_state} using {interpolation} interpolation \n for Annual Average Precipitation\n{year_range}'
             # Customize the x-axis tick labels to emphasize every 10 years
-            x_values = list(df.columns)
-            # x_labels = [year if int(year) % 10  in yeartoshow else year for year in x_values]
+            df= df.loc[:, YearRange]
+            x_values = YearRange
+            # trendline_trace = gettrendline(df, x_values)
+            fig1 = px.line(df.T, x=df.columns, y=df.index, markers=True, title=title)
+            fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="lowess", opacity = 0.2, render_mode = 'svg')
+            fig = go.Figure(data = fig1.data + fig2.data)
             x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
                         extrayear else '' for year in x_values]
-            plt.xticks(range(len(x_values)), x_labels, rotation=75)
-            # Move the legend outside the plot to the upp   er right
-            plt.legend(title='Altitude(200 mtr) range',
-                    loc='upper left', bbox_to_anchor=(1, 1))
+            fig.update_xaxes(title="Years of Time Series")
+            fig.update_yaxes(title="Average Precipiataion (mm)")
+            fig.update_xaxes(tickvals=x_labels, ticktext=x_values)
+            fig.update_traces(hovertemplate='<br>Year: %{x}<br>Precipitation(mm):%{y} ')
 
-            # Show the plot
-            st.pyplot()
-
+                # Customize the legend
+            fig.update_layout(legend_title_text='Altitude(200 mtr) range')
+            st.plotly_chart(fig)
         def getresults(results, MinMaxRange):
             year_wise_data = results.iloc[0:, 0:]
             result_mean = year_wise_data.mean().to_frame().T
@@ -928,7 +976,7 @@ if st.session_state.access_granted:
             name = state
             _path_ = interpolatoinRangeWisePath + f'/{interpolation}200'
             # ShowingBy altitude Range
-            print('Showing by various altitude range')
+            st.write('Showing by various altitude range')
             logging.info(
                 f'---State = {state} --, interpoation = {interpolation}-----')
             df = pd.read_excel(os.path.join(_path_, f'{state}.xlsx'))
@@ -937,21 +985,21 @@ if st.session_state.access_granted:
             df = df[selected_columns]
             df_modified = df
             df = df.set_index('Altitude Range')
-
+            # print(df)
             ShowGraphTemp(df, state, interpolation, x_ticks, YearsRange, Season)
             logging.info(f'---Plotted graph for {name}-{interpolation}----')
 
-            print('PrecipitaionAnalysis  Showing Mankendall test for state', state)
+            st.write('PrecipitaionAnalysis  Showing Mankendall test for state', state)
             PrintMankendallTest(df, state, interpolation, YearsRange, Season)
             logging.info(
                 f'---Showing Sen Slope test for {name}-{interpolation}-----')
 
-            print(
+            st.write(
                 f'PrecipitaionAnalysis ---Showing Sen Slope test for {name}-{interpolation}- ----')
             PrintSenSlopeTest(df, state, interpolation, YearsRange, Season)
 
             logging.info('')
-            print(f'Shoing Complete {state} Precipitaion  graph and analysis')
+            st.write(f'Shoing Complete {state} Precipitaion  graph and analysis')
             MinMaxRange, altitude_range = getmaxminAltitudeVAlues(df_modified)
 
             # now get year of results
@@ -963,13 +1011,13 @@ if st.session_state.access_granted:
                         x_ticks, YearsRange, Season)
             logging.info(f'---Plotted graph for {name}-{interpolation}-Annual----')
 
-            print('Showing Mankendall test for whole state', state)
+            st.write('Showing Mankendall test for whole state', state)
             PrintMankendallTest(modified_df, state,
                                 interpolation, YearsRange, Season)
             logging.info(
                 f'---Showing Sen Slope test for {name}-{interpolation}-Annual----')
 
-            print(
+            st.write(
                 f'---Showing Sen Slope test for {name}-{interpolation}-Annual----')
             PrintSenSlopeTest(modified_df, state,
                             interpolation, YearsRange, Season)
@@ -1018,6 +1066,7 @@ if st.session_state.access_granted:
             'Select Interpolation', 'Linear', 'Cubic', 'Nearest', 'IDW', 'MIDW'])
 
         # Create a multi-option widget for 'yearstoshow_Multioption'
+        st.write("Years to Show: To customize the graph's time scale. For instance, choosing '1' and '5' displays ticks at years like 1951, 1955, 1961, 1965 and so on..")
         selected_years_to_show = st.multiselect(
             'Years to Show:', list(range(10)), [1, 5])
 
