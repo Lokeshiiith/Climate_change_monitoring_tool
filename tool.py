@@ -1005,7 +1005,7 @@ if st.session_state.access_granted:
             PrintSenSlopeTest(df, state, interpolation, YearsRange, Season)
 
             logging.info('')
-            st.write(f'Shoing Complete {state} Precipitaion  graph and analysis')
+            st.write(f'Showing Complete {state} Precipitaion  graph and analysis')
             MinMaxRange, altitude_range = getmaxminAltitudeVAlues(df_modified)
 
             # now get year of results
