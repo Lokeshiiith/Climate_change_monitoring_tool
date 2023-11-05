@@ -908,7 +908,7 @@ if st.session_state.access_granted:
                 formatted_text = textwrap.fill(description, width=100)
                 st.write(f"{outcome}:\n{formatted_text}")
 
-        def ShowGraphTemp(df, State, interpolation, x_ticks, YearRange, Season):
+        def ShowGraphPrecip(df, State, interpolation, x_ticks, YearRange, Season):
             # Set the 'Altitude Range' column as the index
             st.write(Season)
             if 'Altitude Range' in df.columns:
@@ -962,6 +962,10 @@ if st.session_state.access_granted:
             fig.update_layout(legend_title_text='Altitude(200 mtr) range')
             st.plotly_chart(fig)
         def getresults(results, MinMaxRange):
+            if 'Altitude Range' in results.columns:#any name possible
+                results.set_index('Altitude Range', inplace=True)
+            elif 'Altitude range' in results.columns:
+                results.set_index('Altitude range', inplace=True)
             year_wise_data = results.iloc[0:, 0:]
             result_mean = year_wise_data.mean().to_frame().T
             result_mean.insert(0, 'Altitude Range', MinMaxRange)
@@ -976,7 +980,7 @@ if st.session_state.access_granted:
             AltitudeRange = df['Altitude Range'].values
             return MinMaxRange, AltitudeRange
 
-        def DoComputations1(state, interpolation, x_ticks, YearsRange, Season):
+        def DoComputations(state, interpolation, x_ticks, YearsRange, Season):
             YearsRange = [str(year) for year in YearsRange]
             interpolatoinRangeWisePath = './PrecipitaionAnalysis/InterpolateRangeWise'
             name = state
@@ -992,7 +996,7 @@ if st.session_state.access_granted:
             df_modified = df
             df = df.set_index('Altitude Range')
             # print(df)
-            ShowGraphTemp(df, state, interpolation, x_ticks, YearsRange, Season)
+            ShowGraphPrecip(df, state, interpolation, x_ticks, YearsRange, Season)
             logging.info(f'---Plotted graph for {name}-{interpolation}----')
 
             st.write('PrecipitaionAnalysis  Showing Mankendall test for state', state)
@@ -1013,7 +1017,7 @@ if st.session_state.access_granted:
 
             # Now show complete analysis for all altitude range
             modified_df = getresults(df_modified, MinMaxRange)
-            ShowGraphTemp(modified_df, state, interpolation,
+            ShowGraphPrecip(modified_df, state, interpolation,
                         x_ticks, YearsRange, Season)
             logging.info(f'---Plotted graph for {name}-{interpolation}-Annual----')
 
@@ -1105,8 +1109,7 @@ if st.session_state.access_granted:
             Years = list(
                 range(selected_years_to_extract[0], selected_years_to_extract[1]+1))
 
-            DoComputations1(state, Interpolation, ModVal,
-                            Years, Season)  # Fixed this line
+            DoComputations(state, Interpolation, ModVal,Years, Season)  # Fixed this line
 
         # Add a clear button
         # Add a clear button
