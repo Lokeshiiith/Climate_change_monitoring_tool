@@ -81,9 +81,6 @@ log_filename = './Logfiles.log'
 logging.basicConfig(filename=log_filename, level=logging.INFO,format='%(asctime)s - %(levelname)s - %(message)s')
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
-print("Your Computer Name is:" + hostname)
-print("Your Computer IP Address is:" + IPAddr)
-
 logging.info("Your Computer Name is:" + hostname)
 logging.info("Your Computer IP Address is:" + IPAddr)
 
