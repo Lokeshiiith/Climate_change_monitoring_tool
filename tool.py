@@ -14,13 +14,14 @@ import streamlit as st
 from scipy.stats import linregress
 import plotly.express as px
 import plotly.graph_objs as go
-
 try:
     import statsmodels.api as sm
 except ImportError:
     import subprocess
     subprocess.check_call(['pip', 'install', 'statsmodels'])
     import statsmodels.api as sm
+
+import socket
 
 try:
     import openpyxl
@@ -35,9 +36,35 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # Filter out the warning you want to suppress
 warnings.filterwarnings("ignore", message="PyplotGlobalUseWarning")
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.set_page_config(page_title="My Streamlit App",
-                   page_icon=":rocket:", layout="centered")
+st.set_page_config(page_title="IIIT-Hyderabad timberline analysis", page_icon=":rocket:", layout="centered")
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f0f0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
+# Apply custom CSS styles
+st.markdown(
+    """
+    <style>
+    h1 {
+        color: #2e7d32;
+    }
+    p {
+        font-size: 16px;
+    }
+    .widget-label {
+        color: #1976D2;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # Create a list of users and passwords
 # users = {
 #     "lokesh": "123",
@@ -50,6 +77,16 @@ st.set_page_config(page_title="My Streamlit App",
 # username = st.text_input("Username")
 # password = st.text_input("Password", type="password")
 access_granted = True
+log_filename = './Logfiles.log'
+logging.basicConfig(filename=log_filename, level=logging.INFO,format='%(asctime)s - %(levelname)s - %(message)s')
+hostname = socket.gethostname()
+IPAddr = socket.gethostbyname(hostname)
+print("Your Computer Name is:" + hostname)
+print("Your Computer IP Address is:" + IPAddr)
+
+logging.info("Your Computer Name is:" + hostname)
+logging.info("Your Computer IP Address is:" + IPAddr)
+
 # Check the username and password against the list of users and passwords
  # Check if the form is submitted
 # if st.button("Login"):
@@ -85,151 +122,22 @@ if st.session_state.access_granted:
         best_interpolation = sorted_df.iloc[0]['InterpolationType']
         st.write(f"The interpolation method with the highest R-squared is: {best_interpolation}\n You should use this method for your analysis.")
         st.write('')
-    def ProjectInformation():
-
-        st.title("Project Report: Trend Analysis of Precipitation Data (1951-2015) and Temperature Data (1961-2015) in the Himalayan Region")
-        st.subheader("Executive Summary")
-
-        # Introduction
-        st.write('''The study of precipitation trends and temperature trends in the states of Uttarakhand, Jammu & Kashmir (J&K), Sikkim, 
-                Himachal Pradesh, and Arunachal Pradesh holds paramount significance due to its profound implications for regional development, 
-                environmental sustainability, and climate adaptation strategies. This project leveraged the Aphrodite dataset as the primary data source, 
-                offering comprehensive and reliable precipitation data from 1951 to 2015. The core motivation for this endeavor was to address critical 
-                concerns related to precipitation patterns in these ecologically diverse and geographically complex regions, necessitating an in-depth 
-                spatial analysis.
-                ''')
-
-        # Data Preprocessing-------------------------------------------------------------------------
-        # Data Clipping Section
-        st.header("Data Preprocessing")
-        st.subheader("1. Data Clipping")
-
-        # Data Preparation
-        st.markdown("Data Preparation:")
-        st.write('''Initially, the Aphrodite dataset in NetCDF format (.nc) was imported using the `xarray` library. This dataset 
-                contained information on precipitation, latitude, longitude, and time for each year from 1951 to 2015.
-                ''')
-
-        # Loading Shapefiles
-        st.markdown("Loading Shapefiles:")
-        st.write("The shapefiles representing the boundaries of the five states were obtained and loaded into the script using the `geopandas` library. These shapefiles define the spatial extent of each state.")
-
-        # Spatial Clipping
-        st.markdown("Spatial Clipping:")
-        st.write("To clip the precipitation data to the boundaries of each state for each year, a masking operation was performed. This was done using the `xarray` capabilities, where the precipitation data was masked based on the geometries defined by the shapefiles of the respective state.")
-
-        # Analysis and Visualization
-        # Annual Total Precipitation Aggregation-------------------------------------------------------------------
-        st.subheader("2. Annual Total Precipitation Aggregation")
-
-        # Yearly Totals
-        st.markdown("Yearly Totals:")
-        st.write("In this data processing step, the precipitation data from the Aphrodite dataset were aggregated on an annual basis for each coordinate point based on latitude and longitude.")
-        st.write("This aggregation involved summing the daily precipitation values recorded for each point over the course of a year.")
-
-        # Purpose
-        st.markdown("Purpose:")
-        st.write("The annual total precipitation values serve as essential data for further analysis, allowing researchers to examine and identify annual precipitation trends, patterns, and variations at each specific point.")
-        st.write("These aggregated values are valuable for understanding the long-term climate characteristics and variability of precipitation at these points.")
-
-        # Analysis Ready
-        st.markdown("Analysis Ready:")
-        st.write("The data is now structured and ready for various types of climate and hydrological analyses, including trend analysis, anomaly detection, and the study of regional precipitation patterns.")
-
-        # Interpolation Methods--------------------------------------------------------------------------------------
-        st.subheader("3. Interpolation Methods")
-
-        # Linear Interpolation
-        st.markdown("**Linear Interpolation**:")
-        st.write("- **Explanation**: Estimates values between data points assuming a linear relationship.")
-        st.write("- **Reason**: Simple and efficient for regions with consistent gradients.")
-
-        # Cubic Interpolation
-        st.markdown("**Cubic Interpolation**:")
-        st.write("- **Explanation**: Uses cubic polynomial functions for smoother, accurate estimations.")
-        st.write("- **Reason**: Captures complex, nonlinear precipitation patterns.")
-
-        # Nearest Neighbor Interpolation
-        st.markdown("**Nearest Neighbor Interpolation**:")
-        st.write("- **Explanation**: Assigns the closest known data point's value to the target point.")
-        st.write("- **Reason**: Preserves extreme values, suitable for unevenly distributed or abrupt data changes.")
-
-        # IDW Interpolation
-        st.markdown("**Inverse Distance Weighted (IDW) Interpolation**:")
-        st.write("- **Explanation**: Estimates values based on the inverse distance-weighted average of neighboring data points.")
-        st.write("- **Reason**: Effective for capturing spatial variability when the influence of nearby data points is significant.")
-
-        # MIDW Interpolation
-        st.markdown("**Modified Inverse Distance Weighted (MIDW) Interpolation**:")
-        st.write("- **Explanation**: A variation of IDW that adapts the power parameter based on local point distribution.")
-        st.write("- **Reason**: Provides flexibility in capturing variability and reducing the impact of distant data points.")
 
 
-        st.subheader("Analysis and Visualization")
-        st.write("1. **Data Aggregation**:")
-        st.write("Spatial Aggregation: Precipitation data that was previously clipped for each state was combined to create state-specific datasets spanning the entire study period.")
-        st.write("...")  #
-
-        # Trend Analysis----------------------------------------------------------------------------------------------------
-        # Trend Analysis
-        st.subheader("Trend Analysis")
-
-        # Kendall's Tau Test
-        st.markdown("1. **Kendall's Tau Test**:")
-        st.write("Use of Kendall's Tau Test for Trend Analysis:")
-        st.write('''
-                Kendall's Tau test is a non-parametric statistical test used to assess the presence and strength
-        of trends in data over time or across different conditions. In the context of this project, Kendall's
-        Tau test was employed to identify and quantify precipitation trends within specific altitude ranges
-        in the specified states (Uttarakhand, Jammu & Kashmir, Sikkim, Himachal Pradesh, and
-        Arunachal Pradesh.''')
-        st.write('''Procedure: For each altitude range and state, the annual total precipitation data for all")
-                years from 1951 to 2015 were subjected to Kendall's Tau test. This test measures the
-                correlation or concordance between data points in time series data, helping determine
-                whether there is a statistically significant trend, whether it's increasing or decreasing.''')
-        st.write('''Results: The results of Kendall's Tau test were used to identify whether there was a)
-                statistically significant trend in precipitation within each altitude range for each state. The
-                results indicated the direction (positive or negative) and significance level of the trend.''')
-
-
-        # SEN Slope Test
-        st.markdown("2. **SEN Slope Test**:")
-        st.write("SEN (Seasonal Mann-Kendall) Slope Test is a statistical test used to detect monotonic trends in seasonal time series data. It's a variation of the Mann-Kendall test that focuses on seasonal trends.")
-        st.write("Procedure: For each altitude range and state, the annual total precipitation data was subjected to the SEN Slope Test to identify the direction and significance of the seasonal trend. This test is useful for analyzing precipitation trends specific to each season.")
-        st.write("Results: The SEN Slope Test results provide insights into the direction (positive or negative) and significance of the seasonal trend in precipitation data for each altitude range and state.")
-
-
-        # Results and Discussion
-        st.subheader("Results and Discussion")
-        st.write("1. **Key Findings**:")
-        st.write("Summarize the significant trends and slope values observed in the precipitation data for each state and altitude range.")
-        st.write("...")  # Include more details here
-
-        # Conclusion
-        st.subheader("Conclusion")
-        st.write("Sum up the main findings of your analysis and reiterate their importance in the context of climate studies and regional planning.")
-
-        # References
-        st.subheader("References")
-        st.write("Cite any sources, data repositories, or tools used in your analysis.")
-
-        # Appendices
-        st.subheader("Appendices")
-        st.write("Include any supplementary information, code snippets, or additional plots that support your analysis.")
 
     def doIntroduction():
         # Title and Introduction
-        st.title("Introduction Page")
-        st.write("Welcome to the Introduction Page where you can learn more about the key people involved in this project.")
+
+        st.title("Climate Change Analysis timbeline in the Himalayan Region")
+        st.write("Timberline Analysis on States : Uttarakhand, Jammu & Kashmir, Sikkim, Himachal Pradesh, and Arunachal Pradesh")
 
         # Create columns for each person
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.subheader("My Advisor (Dr. Shaik Rehana)")
-            st.write("Associate Professor")
-            st.write("Lab for Spatial Informatics(LSI)")
-            st.write("IIIT, Hyderabad. with expertise in [Hydrologic Impacts of Climate Change].")
+            st.subheader("***Dr. Shaik Rehana***")
+            st.write("Associate Professor, Lab for Spatial Informatics(LSI)")
+            st.write(" ***IIIT-Hyderabad***, With expertise in [Hydrologic Impacts of Climate Change].")
             
             st.image("./Images/srehana.jpg", use_column_width=True)
             # Link to Advisor's LinkedIn Profile
@@ -240,13 +148,13 @@ if st.session_state.access_granted:
             st.markdown(advisor_papers, unsafe_allow_html=True)
         
         with col2:
-            st.subheader("My Guide (Avantika Latwal)")
-            st.write("Research Associate and Ph.D. Scholar at International Institute of Information Technology")
+            st.subheader("***Avantika Latwal***")
+            st.write("Research Associate and Ph.D. Scholar")
+            st.write(" ***IIIT-Hyderabad***.")
             st.image("./Images/avantika.jpg", use_column_width=True)
             # Link to Guide's LinkedIn Profile
             guide_linkedin = "[Guide's LinkedIn Profile](https://www.linkedin.com/in/avantika-latwal/)"
             st.markdown(guide_linkedin, unsafe_allow_html=True)
-
             # Link to Guide's Research Papers
             # guide_papers = "[Guide's Research Papers](Guide's Research Papers URL)"
             # st.markdown(guide_papers, unsafe_allow_html=True)
@@ -255,19 +163,171 @@ if st.session_state.access_granted:
 
         # Information about You
         with col3:
-            st.subheader("About Me (Lokesh Sharma)")
-            st.write("I am a [M.Tech - CSE] student at [IIIT Hyderabad].")
+            st.subheader("***Lokesh Sharma***")
+            st.write("[M.Tech - CSE] 2022-24")
+            st.write(" ***IIIT-Hyderabad***.")
+
             # Link to Your LinkedIn Profile
             st.image("./Images/lokesh.jpg", use_column_width=True)
             your_linkedin = "[Your LinkedIn Profile](https://www.linkedin.com/in/lokesh-sharma-b40a77164/)"
             st.markdown(your_linkedin, unsafe_allow_html=True)
-            # Link to Your Research Papers
-            # your_papers = "[Your Research Papers](Your Research Papers URL)"
-            # st.markdown(your_papers, unsafe_allow_html=True)
+
+    def executive_summary():
+        st.title("Executive Summary")
+
+        st.markdown(
+            """
+            The study of precipitation trends and temperature trends in the states of Uttarakhand, Jammu & Kashmir (J&K), Sikkim, Himachal Pradesh, and Arunachal Pradesh holds paramount significance due to its profound implications for regional development, environmental sustainability, and climate adaptation strategies. This project leveraged the Aphrodite dataset as the primary data source.
+
+            **Aphrodite Dataset**: Aphrodite stands for "Asian Precipitation - Highly-Resolved Observational Data Integration Towards Evaluation." It offers comprehensive and reliable precipitation data from (1951-2015) and Temperature Data (1961-2015), making it a valuable resource for climate research.
+
+            [Link to Aphrodite dataset](http://aphrodite.st.hirosaki-u.ac.jp/download/)
+
+            The core motivation for this endeavor was to address critical concerns related to precipitation and temperature patterns in these ecologically diverse and geographically complex regions, necessitating an in-depth spatial analysis.
+            """
+        )
+    def getdetails():
+        st.header("Data Preprocessing")
+
+        # Data Clipping Section
+        with st.expander("Data Clipping", expanded=True):
+            st.subheader("Data Clipping")
+
+            # Data Preparation
+            st.markdown("Data Preparation:")
+            st.write('''Initially, the Aphrodite dataset in NetCDF format (.nc) was imported using the `xarray` library. This dataset 
+                contained information on precipitation, latitude, longitude, and time for each year from 1951 to 2015.
+                ''')
+
+            # Loading Shapefiles
+            st.markdown("Loading Shapefiles:")
+            st.write("The shapefiles representing the boundaries of the five states were obtained and loaded into the script using the `geopandas` library. These shapefiles define the spatial extent of each state.")
+
+            # Spatial Clipping
+            st.markdown("Spatial Clipping:")
+            st.write("To clip the precipitation data to the boundaries of each state for each year, a masking operation was performed. This was done using the `xarray` capabilities, where the precipitation data was masked based on the geometries defined by the shapefiles of the respective state.")
+
+        # Analysis and Visualization Section
+        with st.expander("Analysis and Visualization"):
+            st.subheader("Analysis and Visualization")
+
+            # Statement 1: Data Aggregation
+            st.markdown("**1. Data Aggregation**:")
+            st.write("We began by performing spatial aggregation of the precipitation data. The previously clipped data for each state was meticulously combined to create state-specific datasets, covering the entire study period.")
+            st.write("This process involved the summation of daily precipitation values recorded at each coordinate point over the course of a year. It's a fundamental step in understanding annual precipitation trends and patterns.")
+
+            # Statement 2: Yearly Totals
+            st.markdown("**Yearly Totals**:")
+            st.write("In this pivotal data processing step, we aggregated the Aphrodite dataset on an annual basis for each coordinate point, taking into account latitude and longitude.")
+            st.write("The aggregation entailed summing the daily precipitation values recorded for each point throughout the year. The result is a crucial dataset for investigating annual precipitation patterns and variations.")
+
+            # Statement 3: Purpose
+            st.markdown("**Purpose**:")
+            st.write("The annual total precipitation values hold immense significance. They provide a foundational dataset for in-depth analysis, enabling researchers to discern annual precipitation trends, patterns, and fluctuations at specific geographic points.")
+            st.write("These aggregated values are invaluable for understanding the long-term climate characteristics and variability of precipitation in these regions.")
+
+            # Statement 4: Analysis Ready
+            st.markdown("**Analysis Ready**:")
+            st.write("With the data now structured and aggregated, it is poised for various forms of climate and hydrological analyses. This includes trend analysis, anomaly detection, and investigations into regional precipitation patterns.")
+            st.write("The groundwork has been laid for gaining insights into the intricate workings of climate in these geographically diverse states.")
 
 
-        # Information about Your Guide
+            # Interpolation Methods
+        with st.expander("3. Interpolation Methods"):
+            st.subheader("Interpolation Methods  used  `scipy` library")
 
+            # Linear Interpolation
+            st.markdown("***Linear Interpolation***:")
+            st.write("- **Explanation**: Estimates values between data points assuming a linear relationship.")
+            st.write("- **Reason**: Simple and efficient for regions with consistent gradients.")
+
+            # Cubic Interpolation
+            st.markdown("***Cubic Interpolation***:")
+            st.write("- **Explanation**: Uses cubic polynomial functions for smoother, accurate estimations.")
+            st.write("- **Reason**: Captures complex, nonlinear precipitation patterns.")
+
+            # Nearest Neighbor Interpolation
+            st.markdown("***Nearest Neighbor Interpolation***:")
+            st.write("- **Explanation**: Assigns the closest known data point's value to the target point.")
+            st.write("- **Reason**: Preserves extreme values, suitable for unevenly distributed or abrupt data changes.")
+
+            # IDW Interpolation
+            st.markdown("***Inverse Distance Weighted (IDW) Interpolation***:")
+            st.write("- **Explanation**: Estimates values based on the inverse distance-weighted average of neighboring data points.")
+            st.write("- **Reason**: Effective for capturing spatial variability when the influence of nearby data points is significant.")
+
+            # MIDW Interpolation
+            st.markdown("***Modified Inverse Distance Weighted (MIDW) Interpolation***:")
+            st.write("- **Explanation**: A variation of IDW that adapts the power parameter based on local point distribution.")
+            st.write("- **Reason**: Provides flexibility in capturing variability and reducing the impact of distant data points.")
+
+        with st.expander("4. Trend Analysis"):
+            st.subheader("Trend Analysis")
+
+            # Kendall's Tau Test
+            st.markdown("1. ***Kendall's Tau Test***:")
+            st.write('''
+                    Kendall's Tau test is a non-parametric statistical test used to assess the presence and strength
+            of trends in data over time or across different conditions. In the context of this project, Kendall's
+            Tau test was employed to identify and quantify precipitation trends within specific altitude ranges
+            in the specified states (Uttarakhand, Jammu & Kashmir, Sikkim, Himachal Pradesh, and
+            Arunachal Pradesh.''')
+            st.write('''- Procedure: For each altitude range and state, the annual total precipitation data for all")
+                    years from 1951 to 2015 were subjected to Kendall's Tau test. This test measures the
+                    correlation or concordance between data points in time series data, helping determine
+                    whether there is a statistically significant trend, whether it's increasing or decreasing.''')
+            st.write('''- Results: The results of Kendall's Tau test were used to identify whether there was a)
+                    statistically significant trend in precipitation within each altitude range for each state. The
+                    results indicated the direction (positive or negative) and significance level of the trend.''')
+
+
+            # SEN Slope Test
+            st.markdown("2. ***SEN Slope Test***:")
+            st.write("SEN (Seasonal Mann-Kendall) Slope Test is a statistical test used to detect monotonic trends in seasonal time series data. It's a variation of the Mann-Kendall test that focuses on seasonal trends.")
+            st.write("- Procedure: For each altitude range and state, the annual total precipitation data was subjected to the SEN Slope Test to identify the direction and significance of the seasonal trend. This test is useful for analyzing precipitation trends specific to each season.")
+            st.write("- Results: The SEN Slope Test results provide insights into the direction (positive or negative) and significance of the seasonal trend in precipitation data for each altitude range and state.")
+
+        with st.expander("5. Results and Discussion"):
+
+            # Results and Discussion
+            st.subheader("Results and Discussion")
+            st.write("1. **Key Findings**:")
+            st.write("Summarize the significant trends and slope values observed in the precipitation data for each state and altitude range.")
+            st.write("...")  # Include more details here
+
+            # Conclusion
+        with st.expander("6.Conclusion"):
+        
+            st.subheader("Conclusion")
+            st.write("Sum up the main findings of your analysis and reiterate their importance in the context of climate studies and regional planning.")
+
+            # References
+        with st.expander("7.References"):
+            st.subheader("References")
+            st.write("Cite any sources, data repositories, or tools used in your analysis.")
+
+            # Appendices
+        with st.expander("8.Appendices"):
+            st.subheader("Appendices")
+            st.write("Include any supplementary information, code snippets, or additional plots that support your analysis.")
+
+        # Anchor Links for Direct Navigation
+        st.markdown("[Go to Data Clipping](#data-clipping)")
+        st.markdown("[Go to Analysis and Visualization](#analysis-and-visualization)")
+        st.markdown("[Go to Interpolation Methods](#interpolation-methods)")
+        st.markdown("[Go to Trend Analysis](#trend-analysis)")
+        st.markdown("[Go to Results and Discussion](#results-and-discussion)")
+        st.markdown("[Go to Conclusion](#conclusion)")
+        st.markdown("[Go to References](#references)")
+        st.markdown("[Go to Appendices](#appendices)")
+
+
+
+    def ProjectInformation():
+
+        st.title("Report: Trend Analysis of Precipitation Data (1951-2015) and Temperature Data (1961-2015) in the Himalayan Region")
+        executive_summary()
+        getdetails()
 
 
     # Information about Temperature Analysis
@@ -276,14 +336,15 @@ if st.session_state.access_granted:
 
     # Introduction Page
     if navigation == "Introduction":
-        st.write("Introduction Page")
+            # Add an image of the institute
+        institute_image = "./Images/iiit_logo.png"  # Replace with the actual image file path
+        st.image(institute_image, use_column_width=True)
         doIntroduction()
 
     if navigation == "Project Information":
         ProjectInformation()
 
     if navigation == "Temperature Analysis":
-        st.title("Temperature Analysis Page")
         def highlight_trend_column(val):
                 if val != 'no trend':
                     return f'background-color: red'  # Change the background color to yellow for rows with trend
@@ -344,8 +405,8 @@ if st.session_state.access_granted:
             # Display result explanations
             st.write("Result Explanations:")
             outcomes = {
-                "Reject": "This means that the data provides sufficient evidence to conclude that the null hypothesis is false.",
-                "Fail to reject": "This means that the data does not provide sufficient evidence to conclude that the null hypothesis is false.",
+                "- Reject": "This means that the data provides sufficient evidence to conclude that the null hypothesis is false.",
+                "- Fail to reject": "This means that the data does not provide sufficient evidence to conclude that the null hypothesis is false.",
             }
 
             for outcome, description in outcomes.items():
@@ -407,16 +468,16 @@ if st.session_state.access_granted:
             tabulate(results_df, headers='keys',
                         tablefmt='fancy_grid', showindex=False)
             outcomes = {
-                'p-value < 0.05, z_test_statics > 0':	'Statistically significant increasing trend',
-                'p-value < 0.05, z_test_statics < 0':	'Statistically significant decreasing trend',
-                'p-value > 0.05':	'Fail to reject the null hypothesis of no trend',
-                'Note ': 'It is a non-parametric measure, so it does not make any assumptions about the distribution of the data.'
+                '- **p-value < 0.05, z-test statistics > 0**': '*Statistically significant increasing trend*',
+                '- **p-value < 0.05, z-test statistics < 0**': '*Statistically significant decreasing trend*',
+                '- **p-value > 0.05**': '*Fail to reject the null hypothesis of no trend*',
+                '- *Note*': '_It is a non-parametric measure, so it does not make any assumptions about the distribution of the data._'
             }
             for outcome, description in outcomes.items():
                 formatted_text = textwrap.fill(description, width=60)
                 st.write(f"{outcome}:\n{formatted_text}",)
 
-        def ShowGraphTemp(df, month, State, interpolation, x_ticks, YearRange, Season):
+        def ShowGraphTemp(df, month, State, interpolation, x_ticks, YearRange, Season, type):
             # Set the 'Altitude Range' column as the index
             # print(Season)
             if Season == 'Annually':
@@ -453,32 +514,49 @@ if st.session_state.access_granted:
 
             # Customize the x-axis tick labels to emphasize every 10 years
             x_values = list(df.columns)
-            # # x_labels = [year if int(year) % 10  in yeartoshow else year for year in x_values]
-            # x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
-            #             extrayear else '' for year in x_values]
-            # plt.xticks(range(len(x_values)), x_labels, rotation=75)
-            # # Move the legend outside the plot to the upp   er right
-            # plt.legend(title='Altitude(200 mtr) range',
-            #         loc='upper left', bbox_to_anchor=(1, 1))
-            # st.pyplot()
-            # Create a line plot using Plotly Express
-            # Split the selected year range to get start and end years
+ 
             df= df.loc[:, YearRange]
             # trendline_trace = gettrendline(df, x_values)
+            # Create a checkbox for adding a trendline
+            fig = None
+            # Create two figures: one with a line plot and one with a scatter plot with a trendline
             fig1 = px.line(df.T, x=df.columns, y=df.index, markers=True, title=title)
-            fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="lowess", opacity = 0.2, render_mode = 'svg')
-            fig = go.Figure(data = fig1.data + fig2.data)
+            # Fit a linear regression model
+            if type == "whole-range":
+                # Extract the years and temperature values
+                x = [int(year) for year in df.columns]  # Years as integers
+                y = df.iloc[0].values
+                
+                # Fit a linear regression model
+                X = sm.add_constant(x)  # Add a constant (intercept) term to the x variable
+                model = sm.OLS(y, X).fit()
+                r_squared = model.rsquared
+                slope = model.params[1]
+                p_value = model.pvalues[1]
+                fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="ols", opacity=0.2, render_mode='svg',color_discrete_sequence=["red"])
+                fig = go.Figure(data=fig1.data + fig2.data)
+            else:
+                # Show only the line plot if the trendline is not selected
+                fig = fig1
             x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
                         extrayear else '' for year in x_values]
             fig.update_xaxes(title="Year")
             fig.update_yaxes(title="Temperature (°C)")
             fig.update_xaxes(tickvals=x_labels, ticktext=x_values)
                 # Customize the legend
-            fig.update_layout(legend_title_text='Altitude(200 mtr) range')
             fig.update_traces(hovertemplate='<br>Year: %{x}<br>Temperature (°C):%{y} ')
-
+            # add r_square value, p-value and slope to graph to legend
+            fig.update_layout(legend_title_text='Altitude(200 mtr) range')
             st.plotly_chart(fig)
-
+            if type == "whole-range":
+                 #upto 4 decimal print r2, p-value and slope
+                print("Trendline :")
+                r_squared = round(r_squared, 4)
+                p_value = round(p_value, 4)
+                slope = round(slope, 4)
+                st.write(f'- R-square value = {r_squared}')
+                st.write(f'- p-value = {p_value}')
+                st.write(f'- Slope = {slope}')
 
         def getresults(results, MinMaxRange):
             year_wise_data = results.iloc[0:, 0:]
@@ -550,22 +628,24 @@ if st.session_state.access_granted:
                 monthMeanFilename = [file for file in os.listdir(
                     _path_) if monthname in file][0]
                 df = pd.read_excel(os.path.join(_path_, monthMeanFilename))
-                ShowGraphTemp(df, monthname, state, interpolation,
-                            x_ticks, YearsRange, Season)
-                logging.info(
-                    f'---Plotted graph for {selected_state}-{interpolation}-{monthname} mean----')
+                with st.expander("Complete State Temp Graph"):
+                    ShowGraphTemp(df, monthname, state, interpolation,
+                                x_ticks, YearsRange, Season, "altitude-wise")
+                    logging.info(
+                        f'---Plotted graph for {selected_state}-{interpolation}-{monthname} mean----')
+                with st.expander("Complete State Temp Mankendall Test"):
+                    st.write(
+                        'Temperature Analysis:Showing Mankendall test for month', monthname)
+                    PrintMankendallTest(
+                        df, state, month, interpolation, YearsRange, Season)
 
-                st.write(
-                    'Temperature Analysis:Showing Mankendall test for month', monthname)
-                PrintMankendallTest(
-                    df, state, month, interpolation, YearsRange, Season)
-
-                st.write(
-                    f'-Temperature Analysis : Showing Sen Slope test for {selected_state}-{interpolation}-{monthname} mean----')
-                logging.info(
-                    f'---Temperature Analysis : Showing Sen Slope test for {selected_state}-{interpolation}-{monthname} mean----')
-                PrintSenSlopeTest(df, state, monthname,
-                                interpolation, YearsRange, Season)
+                    st.write(
+                        f'-Temperature Analysis : Showing Sen Slope test for {selected_state}-{interpolation}-{monthname} mean----')
+                    logging.info(
+                        f'---Temperature Analysis : Showing Sen Slope test for {selected_state}-{interpolation}-{monthname} mean----')
+                with st.expander("Complete State Temp Sen Slope Test"):
+                    PrintSenSlopeTest(df, state, monthname,
+                                    interpolation, YearsRange, Season)
             elif Analysis_type == 'Annually' or Analysis_type == 'Seasonally':
                 _path_ = interpolatoinRangeWisePath + \
                     f'/{state}/{interpolation}200'
@@ -608,40 +688,45 @@ if st.session_state.access_granted:
 
                 df = results_mean
                 # Set the altitude range and years as the first row and first column
-                ShowGraphTemp(df, Months, state, interpolation,
-                            x_ticks, YearsRange, Season)
-                logging.info(
-                    f'---Plotted graph for {selected_state}-{interpolation}-{Months}----')
+                st.write('***Altitude range wise***')
+                with st.expander("Range wise State Temp Graph"):
+                    ShowGraphTemp(df, Months, state, interpolation,
+                                x_ticks, YearsRange, Season, "altitude-wise")
+                    logging.info(
+                        f'---Plotted graph for {selected_state}-{interpolation}-{Months}----')
 
-                st.write(
-                    'Temperature analysis Showing Mankendall test for month', Months)
-                PrintMankendallTest(df, state, Months,
+                with st.expander("Range wise Complete State Temp Mankendall Test"):
+                    st.write('Temperature analysis Showing Mankendall test for month', Months)
+                    PrintMankendallTest(df, state, Months,
+                                        interpolation, YearsRange, Season)
+                    logging.info(
+                        f'---Showing Sen Slope test for {selected_state}-{interpolation}-{Months}----')
+
+                with st.expander("Range wise Complete State Temp Sen Slope Test"):
+                    st.write(f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-{Months}')
+                    PrintSenSlopeTest(df, state, Months,
                                     interpolation, YearsRange, Season)
-                logging.info(
-                    f'---Showing Sen Slope test for {selected_state}-{interpolation}-{Months}----')
+                    # Now show complete analysis for all altitude range
 
-                st.write(
-                    f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-{Months}')
-                PrintSenSlopeTest(df, state, Months,
-                                interpolation, YearsRange, Season)
-                # Now show complete analysis for all altitude range
+                st.write('***Now for all altitude range***')
                 modified_df = getresults(df, MinMaxRange)
-                ShowGraphTemp(modified_df, Months, state, interpolation,
-                            x_ticks, YearsRange, Season)
-                logging.info(
-                    f'---Plotted graph for {selected_state}-{interpolation}-Annual----')
+                with st.expander("Complete State Temp Graph"):
+                    ShowGraphTemp(modified_df, Months, state, interpolation,
+                                x_ticks, YearsRange, Season, "whole-range")
+                    logging.info(
+                        f'---Plotted graph for {selected_state}-{interpolation}-Annual----')
 
-                st.write(
-                    'Temperature analysis Showing Mankendall test for month', Months)
-                PrintMankendallTest(modified_df, state, Months,
+                with st.expander("Complete State Temp Mankendall Test"):
+                    st.write('Temperature analysis Showing Mankendall test ')
+                    PrintMankendallTest(modified_df, state, Months,
+                                        interpolation, YearsRange, Season)
+                    logging.info(f'---Showing Sen Slope test for {selected_state}-{interpolation}-Annual----')
+
+                with st.expander("Complete State Temp Sen Slope Test"):
+                    st.write(f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-Annually')
+                    PrintSenSlopeTest(modified_df, state, Months,
                                     interpolation, YearsRange, Season)
-                logging.info(
-                    f'---Showing Sen Slope test for {selected_state}-{interpolation}-Annual----')
-
-                st.write(
-                    f'Temperature analysis Showing Sen Slope test for {selected_state}-{interpolation}-Annually')
-                PrintSenSlopeTest(modified_df, state, Months,
-                                interpolation, YearsRange, Season)
+                
         ## ------------------------------------------Python code for Streamlit App------------------------------------------##
         # Set up logging
         log_filename = './Logfiles.log'
@@ -735,24 +820,33 @@ if st.session_state.access_granted:
         st.write(f'Selected Years to Extract: {selected_years_to_extract}')
         st.write(f'Selected Season: {Season}')
         # Add a submit button
+        # Define an output area
+        output = st.empty()
         if st.button('Submit'):
-            # Log the selected values
-            logging.info(f'States: {selected_state}')
-            logging.info(f'Season: {Season}')
-            logging.info(f'Analysis_type: {selected_analysis_type}')
-            logging.info(f'Months: {selected_months}')
-            logging.info(f'Interpolation: {selected_interpolation}')
-            logging.info(f'Years to Show: {selected_years_to_show}')
-            logging.info(f'Years to Extract: {selected_years_to_extract}')
-            logging.info('Selected values logged.')
+            if selected_state == 'Select State' or selected_interpolation == 'Select Interpolation':
+                output.error("Please select the State and Interpolation before submitting.")
+            elif selected_analysis_type == 'Select Analysis':
+                output.error("Please select the Analysis Type before submitting.")
+            elif selected_analysis_type == 'Seasonally' and selected_months == []:
+                output.error("Please select the months for that season before submitting.")
+            else:
+                # Log the selected values
+                logging.info(f'States: {selected_state}')
+                logging.info(f'Season: {Season}')
+                logging.info(f'Analysis_type: {selected_analysis_type}')
+                logging.info(f'Months: {selected_months}')
+                logging.info(f'Interpolation: {selected_interpolation}')
+                logging.info(f'Years to Show: {selected_years_to_show}')
+                logging.info(f'Years to Extract: {selected_years_to_extract}')
+                logging.info('Selected values logged.')
 
-            # Call the DoComputations function
-            # Call the DoComputations function
-            state, Analysis_type, Months, Interpolation, ModVal = selected_state, selected_analysis_type, selected_months, selected_interpolation, selected_years_to_show
-            Years = list(
-                range(selected_years_to_extract[0], selected_years_to_extract[1] + 1))
+                # Call the DoComputations function
+                # Call the DoComputations function
+                state, Analysis_type, Months, Interpolation, ModVal = selected_state, selected_analysis_type, selected_months, selected_interpolation, selected_years_to_show
+                Years = list(
+                    range(selected_years_to_extract[0], selected_years_to_extract[1] + 1))
 
-            DoComputations(state, Analysis_type, Months, Interpolation,
+                DoComputations(state, Analysis_type, Months, Interpolation,
                         ModVal, Years, Season)  # Fixed this line
 
         # Add a clear button
@@ -949,7 +1043,7 @@ if st.session_state.access_granted:
             x_values = YearRange
             # trendline_trace = gettrendline(df, x_values)
             fig1 = px.line(df.T, x=df.columns, y=df.index, markers=True, title=title)
-            fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="lowess", opacity = 0.2, render_mode = 'svg')
+            fig2 = px.scatter(df.T, x=df.columns, y=df.index, trendline="ols", opacity = 0.2, render_mode = 'svg')
             fig = go.Figure(data = fig1.data + fig2.data)
             x_labels = [year if int(year[-1]) % 10 in x_ticks or year ==
                         extrayear else '' for year in x_values]
