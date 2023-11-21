@@ -6,6 +6,9 @@ from tabulate import tabulate
 import warnings
 import matplotlib.pyplot as plt
 import os
+import geopandas as gpd
+from streamlit_folium import folium_static
+import folium
 import pandas as pd
 import numpy as np
 import logging
@@ -329,7 +332,7 @@ if st.session_state.access_granted:
 
     # Information about Temperature Analysis
     navigation = st.sidebar.radio("Select a Page", [
-                                "Introduction","Project Information","Problem Statements", "Temperature Analysis", "Precipitation Analysis"])
+                                "Introduction","Project Information", "Timberline Points", "Problem Statements", "Temperature Analysis", "Precipitation Analysis"])
 
     # Introduction Page
     if navigation == "Introduction":
@@ -340,6 +343,72 @@ if st.session_state.access_granted:
 
     if navigation == "Project Information":
         ProjectInformation()
+
+    if navigation == "Timberline Points":
+        st.title("Mapping Captured Timberline points which are approx 30 meter distance")
+        state_mapping = {
+        'Select State': 'Select State',
+        'Uttarakhand': 'UK_TL_2015.xlsx',
+        'Jammu & Kashmir': 'J&K_TL_2015.xlsx',
+        'Arunachal Pradesh': 'AP_TL_2015.xlsx',
+        'Himachal Pradesh': 'HP_TL_2015.xlsx',
+        'Sikkim': 'SK_TL_2015.xlsx',
+        }
+        mask_state_mapping = {
+        'Select State': 'Select State',
+        'Uttarakhand': 'UK/UK.shp',
+        'Jammu & Kashmir': 'J&K/J&K.shp',
+        'Arunachal Pradesh': 'AP/AP.shp',
+        'Himachal Pradesh': 'HP/HP.shp',
+        'Sikkim': 'SK/SK.shp',
+        }
+        # Function to create a folium map with markers
+
+
+        
+        def create_folium_map(df_subset, mask_file):
+            map_center = [df_subset['Latitude'].mean(), df_subset['Longitude'].mean()]
+            my_map = folium.Map(location=map_center, zoom_start=7)
+
+            for index, row in df_subset.iterrows():
+                folium.Marker(
+                    location=[row['Latitude'], row['Longitude']],
+                    tooltip=f"Latitude: {row['Latitude']:.2f}<br>Longitude: {row['Longitude']:.2f}<br>Altitude: {row['Altitude']:.2f}",
+                ).add_to(my_map)
+                # Load the shapefile
+            gdf = gpd.read_file(mask_file)
+            mask_group = folium.FeatureGroup(name='Mask')
+            for geo in gdf.geometry:
+                folium.GeoJson(geo).add_to(mask_group)
+            mask_group.add_to(my_map)
+            # Add the shapefile to the map
+            folium.GeoJson(data=gdf).add_to(my_map)
+            folium_static(my_map)
+
+
+        files = os.listdir("./TimberlinePoints/")
+        selected_file = st.selectbox("Select a state to know about timberline points", list(state_mapping.keys()))
+        if st.button("Submit"):
+            if selected_file != 'Select State':
+                # import ipdb
+                # ipdb.set_trace()
+                real_file_name =  state_mapping[selected_file]
+                mask_file = mask_state_mapping[selected_file]
+                file_path = os.path.join("./TimberlinePoints/", real_file_name)
+                mask_path = os.path.join("./State_Boundary/", mask_file)
+                df = pd.read_excel(file_path)
+                st.subheader(f"Displaying contents of {selected_file} file:")
+                st.write("Number of timberline points selected are :", df.shape[0])  
+                st.write(df)
+                n = 300
+                st.write(f"Showing random {n} points on {selected_file},out of {df.shape[0]} which shows how disperse the points")
+                create_folium_map(df.sample(n), mask_path)
+                st.write(f"- Displayed on this map are a carefully selected subset of {n} points out of a vast dataset comprising {df.shape[0]}  locations within a particular region.")
+                st.write("-While showcasing the entire dataset would be too heavy for seamless web performance, these 300 points offer a comprehensive and precise representation")
+                st.write("- Each point intricately reflects the depth of our captured information, providing a descriptive and meaningful glimpse into the expansive landscape we've meticulously documented.")
+            else:
+                st.warning("Please select a state.")
+            
 
     if navigation == "Temperature Analysis":
         def highlight_trend_column(val):
