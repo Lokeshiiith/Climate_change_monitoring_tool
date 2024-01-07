@@ -45,13 +45,15 @@ st.markdown(
     <style>
     body {
         background-color: #f0f0f0;
+        width: 200%;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+# Set the page width to 800 pixels
 
-# Apply custom CSS styles
+
 st.markdown(
     """
     <style>
@@ -105,6 +107,7 @@ if 'access_granted' not in st.session_state:
 
 # If access is granted, display the navigation options
 if st.session_state.access_granted:    
+ 
 
     def getgetR_square(state,_path):
         if state == 'J&K':
@@ -842,7 +845,7 @@ if st.session_state.access_granted:
         # )
         # Create dropdown widget for type of analysis
         selected_analysis_type = st.selectbox(
-            'Type of Analysis:', ['Select Analysis', 'Monthly', 'Annually', 'Seasonally'])
+            'Type of Analysis:', ['Select Analysis','Annually', 'Seasonally'])
 
         def on_analysis_dropdown_change(selected_analysis):
             selected_months = []
