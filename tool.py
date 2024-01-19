@@ -174,6 +174,8 @@ if st.session_state.access_granted:
             st.image("./Images/lokesh.jpg", use_column_width=True)
             your_linkedin = "[Your LinkedIn Profile](https://www.linkedin.com/in/lokesh-sharma-b40a77164/)"
             st.markdown(your_linkedin, unsafe_allow_html=True)
+            githubcode = "[All Code github links](https://github.com/Lokeshiiith/Climate_change_monitoring_tool)"
+            st.markdown(githubcode, unsafe_allow_html=True)
 
     def executive_summary():
         st.title("Executive Summary")
@@ -804,6 +806,8 @@ if st.session_state.access_granted:
 
         # Output widget for displaying results
         st.title('Temperature Analysis')
+        githubcode = "[Temperature Github code](https://github.com/Lokeshiiith/Climate_change_monitoring_tool/blob/main/TemperatureAnalysis.ipynb)"
+        st.markdown(githubcode, unsafe_allow_html=True)
         selected_state = None
         selected_analysis_type = None
         selected_months = []
@@ -937,6 +941,8 @@ if st.session_state.access_granted:
 
     if navigation == "Precipitation Analysis":
         st.title("Precipitation Analysis Page")
+        githubcode = "[Precipitaion Github code](https://github.com/Lokeshiiith/Climate_change_monitoring_tool/blob/main/PrecipitaionAnalysis.ipynb)"
+        st.markdown(githubcode, unsafe_allow_html=True)
         # Your precipitation analysis code here
         def highlight_trend_column(val):
             if val != 'no trend':
